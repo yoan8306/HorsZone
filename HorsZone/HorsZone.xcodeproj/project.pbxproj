@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5FE35B6B2731C73900DC1EA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */; };
+		5FE35B6D2731C73900DC1EA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */; };
+		5FE35B722731C73900DC1EA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE35B702731C73900DC1EA2 /* Main.storyboard */; };
+		5FE35B752731C73900DC1EA2 /* HorsZone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B732731C73900DC1EA2 /* HorsZone.xcdatamodeld */; };
+		5FE35B772731C73D00DC1EA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FE35B762731C73D00DC1EA2 /* Assets.xcassets */; };
+		5FE35B7A2731C73D00DC1EA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE35B782731C73D00DC1EA2 /* LaunchScreen.storyboard */; };
+		5FE35B882731CC8A00DC1EA2 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B872731CC8A00DC1EA2 /* MapKitViewController.swift */; };
+		5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */; };
+		5FE35B8C2731D68700DC1EA2 /* ZoneIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */; };
+		5FE35B8E2731D99900DC1EA2 /* extensionMKPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B8D2731D99900DC1EA2 /* extensionMKPolygon.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5FE35B672731C73900DC1EA2 /* HorsZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorsZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5FE35B712731C73900DC1EA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5FE35B742731C73900DC1EA2 /* HorsZone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HorsZone.xcdatamodel; sourceTree = "<group>"; };
+		5FE35B762731C73D00DC1EA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5FE35B792731C73D00DC1EA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5FE35B7B2731C73D00DC1EA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = HorsZone/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
+		5FE35B872731CC8A00DC1EA2 /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
+		5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListZoneViewController.swift; sourceTree = "<group>"; };
+		5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneIdentity.swift; sourceTree = "<group>"; };
+		5FE35B8D2731D99900DC1EA2 /* extensionMKPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionMKPolygon.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5FE35B642731C73900DC1EA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5FE35B5E2731C73900DC1EA2 = {
+			isa = PBXGroup;
+			children = (
+				5FE35B692731C73900DC1EA2 /* HorsZone */,
+				5FE35B682731C73900DC1EA2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5FE35B682731C73900DC1EA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5FE35B672731C73900DC1EA2 /* HorsZone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5FE35B692731C73900DC1EA2 /* HorsZone */ = {
+			isa = PBXGroup;
+			children = (
+				5FE35B862731C83800DC1EA2 /* CoreData */,
+				5FE35B852731C82C00DC1EA2 /* Extension */,
+				5FE35B842731C82000DC1EA2 /* SupportingFiles */,
+				5FE35B832731C81700DC1EA2 /* Model */,
+				5FE35B822731C80E00DC1EA2 /* View */,
+				5FE35B812731C80400DC1EA2 /* Controller */,
+			);
+			path = HorsZone;
+			sourceTree = "<group>";
+		};
+		5FE35B812731C80400DC1EA2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5FE35B872731CC8A00DC1EA2 /* MapKitViewController.swift */,
+				5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5FE35B822731C80E00DC1EA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5FE35B702731C73900DC1EA2 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5FE35B832731C81700DC1EA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5FE35B842731C82000DC1EA2 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */,
+				5FE35B782731C73D00DC1EA2 /* LaunchScreen.storyboard */,
+				5FE35B762731C73D00DC1EA2 /* Assets.xcassets */,
+				5FE35B7B2731C73D00DC1EA2 /* Info.plist */,
+				5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		5FE35B852731C82C00DC1EA2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5FE35B8D2731D99900DC1EA2 /* extensionMKPolygon.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		5FE35B862731C83800DC1EA2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5FE35B732731C73900DC1EA2 /* HorsZone.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5FE35B662731C73900DC1EA2 /* HorsZone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FE35B7E2731C73D00DC1EA2 /* Build configuration list for PBXNativeTarget "HorsZone" */;
+			buildPhases = (
+				5FE35B632731C73900DC1EA2 /* Sources */,
+				5FE35B642731C73900DC1EA2 /* Frameworks */,
+				5FE35B652731C73900DC1EA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HorsZone;
+			productName = HorsZone;
+			productReference = 5FE35B672731C73900DC1EA2 /* HorsZone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5FE35B5F2731C73900DC1EA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					5FE35B662731C73900DC1EA2 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = 5FE35B622731C73900DC1EA2 /* Build configuration list for PBXProject "HorsZone" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5FE35B5E2731C73900DC1EA2;
+			productRefGroup = 5FE35B682731C73900DC1EA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5FE35B662731C73900DC1EA2 /* HorsZone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5FE35B652731C73900DC1EA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FE35B7A2731C73D00DC1EA2 /* LaunchScreen.storyboard in Resources */,
+				5FE35B772731C73D00DC1EA2 /* Assets.xcassets in Resources */,
+				5FE35B722731C73900DC1EA2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5FE35B632731C73900DC1EA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FE35B752731C73900DC1EA2 /* HorsZone.xcdatamodeld in Sources */,
+				5FE35B8C2731D68700DC1EA2 /* ZoneIdentity.swift in Sources */,
+				5FE35B6B2731C73900DC1EA2 /* AppDelegate.swift in Sources */,
+				5FE35B882731CC8A00DC1EA2 /* MapKitViewController.swift in Sources */,
+				5FE35B8E2731D99900DC1EA2 /* extensionMKPolygon.swift in Sources */,
+				5FE35B6D2731C73900DC1EA2 /* SceneDelegate.swift in Sources */,
+				5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5FE35B702731C73900DC1EA2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FE35B712731C73900DC1EA2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5FE35B782731C73D00DC1EA2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5FE35B792731C73D00DC1EA2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5FE35B7C2731C73D00DC1EA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = HorsZone/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5FE35B7D2731C73D00DC1EA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = HorsZone/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5FE35B7F2731C73D00DC1EA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NLCUCTBNY2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HorsZone/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.-YoanSoussand.HorsZone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5FE35B802731C73D00DC1EA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NLCUCTBNY2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HorsZone/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.-YoanSoussand.HorsZone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5FE35B622731C73900DC1EA2 /* Build configuration list for PBXProject "HorsZone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FE35B7C2731C73D00DC1EA2 /* Debug */,
+				5FE35B7D2731C73D00DC1EA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FE35B7E2731C73D00DC1EA2 /* Build configuration list for PBXNativeTarget "HorsZone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FE35B7F2731C73D00DC1EA2 /* Debug */,
+				5FE35B802731C73D00DC1EA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5FE35B732731C73900DC1EA2 /* HorsZone.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5FE35B742731C73900DC1EA2 /* HorsZone.xcdatamodel */,
+			);
+			currentVersion = 5FE35B742731C73900DC1EA2 /* HorsZone.xcdatamodel */;
+			path = HorsZone.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5FE35B5F2731C73900DC1EA2 /* Project object */;
+}
