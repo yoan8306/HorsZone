@@ -11,28 +11,29 @@ import CoreLocation
 import AudioToolbox
 
 class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-
     // MARK: - Properties
     var zoneRecord = ZoneIdentify.all
     var locationManager = CLLocationManager()
     var canAddZone = false
     var points = [CLLocationCoordinate2D]()
     var area: [CLLocationCoordinate2D] = []
-
+    var timer: Timer?
+    var counter = 0
+    var startCheckPosition = false
+    var polygonIdentity: [MKPolygon] = []
+    
     // MARK: - IBoutlet
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var segmentedMap: UISegmentedControl!
     @IBOutlet weak var speedLabel: UILabel!
     @IBOutlet weak var cleanLastZoneButton: UIButton!
+    @IBOutlet weak var startMonitoringButton: UIButton!
     @IBOutlet weak var addZoneSwitch: UISwitch!
     
-    
-
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeMapView()
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -41,7 +42,6 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
         if let touch = touches.first {
             let coordinate = mapView.convert(touch.location(in: mapView), toCoordinateFrom: mapView)
-            
             points.append(coordinate)
         }
     }
@@ -62,29 +62,25 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         guard canAddZone else {
             return
         }
-       
-//        let newCoordinate = ZoneIdentify(context: AppDelegate.viewContext)
-//        try? AppDelegate.viewContext.save()
-        
+        //        let newCoordinate = ZoneIdentify(context: AppDelegate.viewContext)
+        //        try? AppDelegate.viewContext.save()
         let polygon = MKPolygon(coordinates: &points, count: points.count)
         mapView.addOverlay(polygon)
+        polygonIdentity.append(polygon)
         points = [] // Reset points
     }
-    
     
     // MARK: - IBAction
     @IBAction func addZoneSwitchAction(_ sender: Any) {
         if addZoneSwitch.isOn {
-            canAddZone = true
-            mapView.isUserInteractionEnabled = false
+            addZoneOn()
+            startMonitoringOff()
         } else {
-            canAddZone = false
-            mapView.isUserInteractionEnabled = true
+            addZoneOff()
         }
     }
     
     @IBAction func userLocationButton(_ sender: Any) {
-
         switch CLLocationManager.authorizationStatus() {
         case .authorized, .authorizedAlways, .authorizedWhenInUse:
             mapView.setUserTrackingMode(.follow, animated: true)
@@ -99,20 +95,48 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         segmentedMapStyle(segmentIndex: sender.selectedSegmentIndex)
     }
     
+    @IBAction func startMonitoringActionButton() {
+        addZoneOff()
+        
+        guard CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways else {
+            presentAlert_Alert(alertMessage: "Veuillez activer la localisation")
+            return
+        }
+        
+        guard !startCheckPosition else {
+            startMonitoringOff()
+            return
+        }
+        startMonitoringOn()
+    }
+    
+    @objc func checkPositionInPolygon() {
+        counter += 1
+        if counter == 3 {
+            guard checkIfUserInPolygon() else {
+                vibrate()
+                presentAlert_Alert(alertMessage: "vous avez quitté la zone")
+                counter = 0
+                return
+            }
+            counter = 0
+        }
+    }
     
     @IBAction func cleanLastZoneAction(_ sender: Any) {
     }
     
     
     // MARK: - Private function
+    
     private func initializeMapView() {
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.isZoomEnabled = true
-
+        
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
-
+        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -122,7 +146,8 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     private func segmentedMapStyle(segmentIndex: Int) {
-        let segmentValue =  segmentedMap.titleForSegment(at: segmentIndex) //selectedSegmentIndex
+        let segmentValue =  segmentedMap.titleForSegment(at: segmentIndex)
+        
         switch segmentValue {
         case "Standard":
             mapView.mapType = .standard
@@ -135,6 +160,58 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
     }
     
+    private func checkIfUserInPolygon() -> Bool {
+        for zone in polygonIdentity {
+            if zone.contain(coordonate: mapView.userLocation.coordinate) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    private func animateMonitoringButton() {
+        UIView.animate(withDuration: 0.8, delay: 0, options: .transitionCurlUp, animations: {
+            self.startMonitoringButton.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.8, delay: 0, options: .transitionCurlUp, animations: {
+            self.startMonitoringButton.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.8, delay: 0, options: .transitionCurlUp, animations: {
+            self.startMonitoringButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: nil)
+    }
+    
+    private func addZoneOff() {
+        canAddZone = false
+        mapView.isUserInteractionEnabled = true
+        addZoneSwitch.isOn = false
+        cleanLastZoneButton.isHidden = true
+    }
+    
+    private func addZoneOn() {
+        canAddZone = true
+        mapView.isUserInteractionEnabled = false
+        addZoneSwitch.isOn = true
+        cleanLastZoneButton.isHidden = false
+    }
+    
+    private func startMonitoringOff() {
+        startMonitoringButton.backgroundColor? = .init(red: 0, green: 0, blue: 0, alpha: 0)
+        startCheckPosition = false
+        timer?.invalidate()
+    }
+    
+    private func startMonitoringOn() {
+        startCheckPosition = true
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                     selector: #selector(checkPositionInPolygon), userInfo: nil, repeats: true)
+        startMonitoringButton.backgroundColor = #colorLiteral(red: 0, green: 0.9866302609, blue: 0.837818563, alpha: 0.699257234)
+        startMonitoringButton.layer.cornerRadius = startMonitoringButton.frame.height / 2
+        animateMonitoringButton()
+    }
+    
     private func presentAlert_Alert (alertTitle title: String = "Erreur", alertMessage message: String, buttonTitle titleButton: String = "Ok", alertStyle style: UIAlertAction.Style = .cancel) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: titleButton, style: style, handler: nil)
@@ -142,25 +219,28 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         present(alertVC, animated: true, completion: nil)
     }
     
+    private func vibrate() {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+    }
 }
 
 // MARK: - Function MapKit, location Manager
 extension MapKitViewController {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if canAddZone {
-        if overlay is MKPolyline {
-            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRenderer.strokeColor = UIColor.darkGray
-            polylineRenderer.lineWidth = 1
+            if overlay is MKPolyline {
+                let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+                polylineRenderer.strokeColor = UIColor.darkGray
+                polylineRenderer.lineWidth = 1
+                return polylineRenderer
+                
+            } else if overlay is MKPolygon {
+                let polygonView = MKPolygonRenderer(overlay: overlay)
+                polygonView.fillColor = .magenta
+                polygonView.alpha = 0.3
+                return polygonView
+            }
             
-            return polylineRenderer
-            
-        } else if overlay is MKPolygon {
-            let polygonView = MKPolygonRenderer(overlay: overlay)
-            polygonView.fillColor = .magenta
-            polygonView.alpha = 0.3
-            return polygonView
-        }
         } else {
             if overlay is MKPolyline {
                 let roadView = MKPolylineRenderer(overlay: overlay)

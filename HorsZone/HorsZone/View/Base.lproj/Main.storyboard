@@ -76,7 +76,7 @@
                                     <constraint firstAttribute="width" secondItem="NLP-ni-pBs" secondAttribute="height" multiplier="20:7" id="YYT-oW-4kh"/>
                                     <constraint firstAttribute="height" constant="23" id="nAk-zW-XKi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.74909383060000001" green="0.76864182950000004" blue="0.78894788029999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -129,7 +129,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IN1-rn-eMX">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IN1-rn-eMX">
                                 <rect key="frame" x="281" y="64" width="123" height="44"/>
                                 <color key="backgroundColor" red="0.99848741292953491" green="0.72608053684234619" blue="0.010422376915812492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -138,11 +138,22 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Effacer la dernière zone">
+                                <state key="normal" title="Annuler">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
                                     <action selector="cleanLastZoneAction:" destination="bzE-FN-Jjw" eventType="touchUpInside" id="ygO-XY-WSK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dm-76-Bfc">
+                                <rect key="frame" x="10" y="731" width="140" height="34"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Start monitoring">
+                                    <color key="titleShadowColor" red="0.99583572149999999" green="0.98051899669999998" blue="0.9352718592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startMonitoringActionButton" destination="bzE-FN-Jjw" eventType="touchUpInside" id="y2o-kQ-Nz4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -152,12 +163,15 @@
                             <constraint firstItem="bL1-Nr-OjM" firstAttribute="trailing" secondItem="alm-U4-yb0" secondAttribute="trailing" id="0Zu-Yp-rHG"/>
                             <constraint firstItem="IN1-rn-eMX" firstAttribute="top" secondItem="bL1-Nr-OjM" secondAttribute="top" constant="20" id="A0R-PJ-TMy"/>
                             <constraint firstItem="IN1-rn-eMX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rm7-6x-QPP" secondAttribute="trailing" constant="8" symbolic="YES" id="APn-9h-YAc"/>
+                            <constraint firstItem="6dm-76-Bfc" firstAttribute="leading" secondItem="B5h-hg-1vo" secondAttribute="leading" constant="10" id="Cvl-Wp-TcM"/>
                             <constraint firstItem="roj-ZR-bZg" firstAttribute="top" secondItem="bL1-Nr-OjM" secondAttribute="top" id="KkZ-Z3-XCc"/>
                             <constraint firstItem="bL1-Nr-OjM" firstAttribute="trailing" secondItem="roj-ZR-bZg" secondAttribute="trailing" id="NLg-mb-fVA"/>
                             <constraint firstItem="pnq-QY-lNi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bL1-Nr-OjM" secondAttribute="leading" symbolic="YES" id="Oea-8v-Nop"/>
+                            <constraint firstItem="NLP-ni-pBs" firstAttribute="bottom" secondItem="6dm-76-Bfc" secondAttribute="bottom" id="Rb3-oe-p2s"/>
                             <constraint firstItem="bL1-Nr-OjM" firstAttribute="bottom" secondItem="roj-ZR-bZg" secondAttribute="bottom" id="TqR-Ee-YII"/>
                             <constraint firstItem="3K8-qz-Akj" firstAttribute="top" secondItem="Rm7-6x-QPP" secondAttribute="bottom" constant="8" id="WBt-EE-FQ3"/>
                             <constraint firstItem="3K8-qz-Akj" firstAttribute="leading" secondItem="bL1-Nr-OjM" secondAttribute="leading" constant="20" id="ZZS-7u-WkK"/>
+                            <constraint firstItem="NLP-ni-pBs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6dm-76-Bfc" secondAttribute="trailing" constant="8" symbolic="YES" id="a4b-84-u9t"/>
                             <constraint firstItem="roj-ZR-bZg" firstAttribute="leading" secondItem="bL1-Nr-OjM" secondAttribute="leading" id="cPU-nP-h9K"/>
                             <constraint firstItem="NLP-ni-pBs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bL1-Nr-OjM" secondAttribute="leading" symbolic="YES" id="fUx-DU-lRR"/>
                             <constraint firstItem="bL1-Nr-OjM" firstAttribute="trailing" secondItem="NLP-ni-pBs" secondAttribute="trailing" constant="20" id="gwm-dl-feo"/>
@@ -180,6 +194,7 @@
                         <outlet property="mapView" destination="roj-ZR-bZg" id="XPc-Tk-auD"/>
                         <outlet property="segmentedMap" destination="alm-U4-yb0" id="yE3-5x-XiH"/>
                         <outlet property="speedLabel" destination="NLP-ni-pBs" id="hpD-O6-ZPL"/>
+                        <outlet property="startMonitoringButton" destination="6dm-76-Bfc" id="bQD-WQ-vYa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxV-8A-sSD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
