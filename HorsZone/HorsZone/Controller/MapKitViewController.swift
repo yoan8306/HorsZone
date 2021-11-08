@@ -21,6 +21,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var counter = 0
     var startCheckPosition = false
     var polygonIdentity: [MKPolygon] = []
+    var background: UIBackgroundTaskIdentifier = .invalid
     
     // MARK: - IBoutlet
     @IBOutlet weak var mapView: MKMapView!
@@ -32,6 +33,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     // MARK: - Life cycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         initializeMapView()
     }
