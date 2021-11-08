@@ -16,7 +16,8 @@
 		5FE35B882731CC8A00DC1EA2 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B872731CC8A00DC1EA2 /* MapKitViewController.swift */; };
 		5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */; };
 		5FE35B8C2731D68700DC1EA2 /* ZoneIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */; };
-		5FE35B8E2731D99900DC1EA2 /* extensionMKPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B8D2731D99900DC1EA2 /* extensionMKPolygon.swift */; };
+		5FE35B8E2731D99900DC1EA2 /* ExtensionMKPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B8D2731D99900DC1EA2 /* ExtensionMKPolygon.swift */; };
+		5FF11B092732B71F0015A023 /* ExtensionNsManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF11B082732B71F0015A023 /* ExtensionNsManagedObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +32,8 @@
 		5FE35B872731CC8A00DC1EA2 /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
 		5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListZoneViewController.swift; sourceTree = "<group>"; };
 		5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneIdentity.swift; sourceTree = "<group>"; };
-		5FE35B8D2731D99900DC1EA2 /* extensionMKPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionMKPolygon.swift; sourceTree = "<group>"; };
+		5FE35B8D2731D99900DC1EA2 /* ExtensionMKPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMKPolygon.swift; sourceTree = "<group>"; };
+		5FF11B082732B71F0015A023 /* ExtensionNsManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNsManagedObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +116,8 @@
 		5FE35B852731C82C00DC1EA2 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				5FE35B8D2731D99900DC1EA2 /* extensionMKPolygon.swift */,
+				5FE35B8D2731D99900DC1EA2 /* ExtensionMKPolygon.swift */,
+				5FF11B082732B71F0015A023 /* ExtensionNsManagedObject.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -201,8 +204,9 @@
 				5FE35B752731C73900DC1EA2 /* HorsZone.xcdatamodeld in Sources */,
 				5FE35B8C2731D68700DC1EA2 /* ZoneIdentity.swift in Sources */,
 				5FE35B6B2731C73900DC1EA2 /* AppDelegate.swift in Sources */,
+				5FF11B092732B71F0015A023 /* ExtensionNsManagedObject.swift in Sources */,
 				5FE35B882731CC8A00DC1EA2 /* MapKitViewController.swift in Sources */,
-				5FE35B8E2731D99900DC1EA2 /* extensionMKPolygon.swift in Sources */,
+				5FE35B8E2731D99900DC1EA2 /* ExtensionMKPolygon.swift in Sources */,
 				5FE35B6D2731C73900DC1EA2 /* SceneDelegate.swift in Sources */,
 				5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */,
 			);
@@ -282,7 +286,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = HorsZone/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -338,7 +342,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = HorsZone/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
