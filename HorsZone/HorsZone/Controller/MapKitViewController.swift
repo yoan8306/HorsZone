@@ -16,7 +16,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var locationManager = CLLocationManager()
     var canAddZone = false
     var points = [CLLocationCoordinate2D]()
-    var area: [CLLocationCoordinate2D] = []
+    var pointUserHistory: [CLLocationCoordinate2D] = []
     var timer: Timer?
     var counter = 0
     var startCheckPosition = false
@@ -36,6 +36,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         initializeMapView()
     }
     
+    /// take first point for make polygon
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard canAddZone else {
             return
@@ -46,6 +47,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
     }
     
+    /// create polyline for make polygon
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard canAddZone else {
             return
@@ -58,6 +60,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
     }
     
+    /// Create polygon
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard canAddZone else {
             return
@@ -71,6 +74,9 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     // MARK: - IBAction
+    
+    /// disable user interface for draw polygon
+    /// - Parameter sender: switch addZone
     @IBAction func addZoneSwitchAction(_ sender: Any) {
         if addZoneSwitch.isOn {
             addZoneOn()
@@ -91,10 +97,12 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
     }
     
+    /// change map view
     @IBAction func segmentedAction(_ sender: UISegmentedControl) {
         segmentedMapStyle(segmentIndex: sender.selectedSegmentIndex)
     }
     
+    /// start if user is in polygon
     @IBAction func startMonitoringActionButton() {
         addZoneOff()
         
@@ -110,6 +118,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         startMonitoringOn()
     }
     
+    /// check user each 3 secondes if user is in polygon
     @objc func checkPositionInPolygon() {
         counter += 1
         if counter == 3 {
@@ -123,7 +132,10 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
     }
     
+    /// erase last zone. no functionnaly
     @IBAction func cleanLastZoneAction(_ sender: Any) {
+//  remove all zone modify on going
+        mapView.removeOverlays(mapView.overlays)
     }
     
     
@@ -160,6 +172,8 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
     }
     
+    /// check if user location is in polygonIdentity
+    /// - Returns: if user is in polygon return true
     private func checkIfUserInPolygon() -> Bool {
         for zone in polygonIdentity {
             if zone.contain(coordonate: mapView.userLocation.coordinate) {
@@ -203,6 +217,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         timer?.invalidate()
     }
     
+    /// initialize timer and launch checkPositionInPolygon()
     private func startMonitoringOn() {
         startCheckPosition = true
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
@@ -253,16 +268,20 @@ extension MapKitViewController {
         return MKPolylineRenderer(overlay: overlay)
     }
     
+    // make speed user and stock user point location
+    /// - Parameters:
+    ///   - manager: user locationManager
+    ///   - locations: location user array
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for element in  locations {
-            area.append(element.coordinate)
+            pointUserHistory.append(element.coordinate)
         }
         
         guard let speed = manager.location?.speed else { return }
         let speedConverted = speed / 1000 * 3600
         speedLabel.text = speed < 0 ? "No movement registered" : String(format: "%.0f", speedConverted) + " km/h"
         
-        let polylines = MKPolyline(coordinates: &area, count: area.count)
+        let polylines = MKPolyline(coordinates: &pointUserHistory, count: pointUserHistory.count)
         mapView.addOverlay(polylines)
         
         let roadViewer = MKPolylineRenderer(overlay: polylines)
