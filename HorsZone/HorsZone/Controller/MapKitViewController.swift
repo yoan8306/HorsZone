@@ -32,6 +32,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     // MARK: - Life cycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         initializeMapView()
     }
@@ -212,6 +213,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     private func startMonitoringOff() {
+        locationManager.allowsBackgroundLocationUpdates = false
         startMonitoringButton.backgroundColor? = .init(red: 0, green: 0, blue: 0, alpha: 0)
         startCheckPosition = false
         timer?.invalidate()
@@ -219,6 +221,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     /// initialize timer and launch checkPositionInPolygon()
     private func startMonitoringOn() {
+        locationManager.allowsBackgroundLocationUpdates = true
         startCheckPosition = true
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
                                      selector: #selector(checkPositionInPolygon), userInfo: nil, repeats: true)
