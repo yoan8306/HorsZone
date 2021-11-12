@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F6011DD2739D85F00B857A6 /* PointList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6011DC2739D85F00B857A6 /* PointList.swift */; };
 		5FE35B6B2731C73900DC1EA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */; };
 		5FE35B6D2731C73900DC1EA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */; };
 		5FE35B722731C73900DC1EA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE35B702731C73900DC1EA2 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F6011DC2739D85F00B857A6 /* PointList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointList.swift; sourceTree = "<group>"; };
 		5FE35B672731C73900DC1EA2 /* HorsZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorsZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */,
+				5F6011DC2739D85F00B857A6 /* PointList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				5FE35B8E2731D99900DC1EA2 /* ExtensionMKPolygon.swift in Sources */,
 				5FE35B6D2731C73900DC1EA2 /* SceneDelegate.swift in Sources */,
 				5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */,
+				5F6011DD2739D85F00B857A6 /* PointList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

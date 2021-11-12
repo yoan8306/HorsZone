@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ZoneIdentify" representedClassName=".ZoneIdentify" syncable="YES" codeGenerationType="category">
+    <entity name="PointList" representedClassName=".PointList" syncable="YES" codeGenerationType="category">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="zoneIdentify" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ZoneIdentify" inverseName="pointList" inverseEntity="ZoneIdentify"/>
+    </entity>
+    <entity name="ZoneIdentify" representedClassName=".ZoneIdentify" syncable="YES" codeGenerationType="category">
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="no name"/>
-        <attribute name="userTrack" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="pointList" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PointList" inverseName="zoneIdentify" inverseEntity="PointList"/>
     </entity>
     <elements>
-        <element name="ZoneIdentify" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="ZoneIdentify" positionX="542.5370483398438" positionY="-686.5569763183594" width="128" height="73"/>
+        <element name="PointList" positionX="725.6183471679688" positionY="-679.2909240722656" width="128" height="88"/>
     </elements>
 </model>
