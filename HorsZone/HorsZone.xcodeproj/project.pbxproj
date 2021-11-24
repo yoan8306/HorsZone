@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F275AF9273F236500F7C599 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F275AF8273F236500F7C599 /* SettingsViewController.swift */; };
 		5F6011DD2739D85F00B857A6 /* PointList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6011DC2739D85F00B857A6 /* PointList.swift */; };
+		5FC3D87B273E6D210088ACA7 /* orchestralEmergency.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */; };
 		5FE35B6B2731C73900DC1EA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */; };
 		5FE35B6D2731C73900DC1EA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */; };
 		5FE35B722731C73900DC1EA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE35B702731C73900DC1EA2 /* Main.storyboard */; };
@@ -22,7 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F275AF8273F236500F7C599 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5F6011DC2739D85F00B857A6 /* PointList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointList.swift; sourceTree = "<group>"; };
+		5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = orchestralEmergency.mp3; path = "../../../../../../Music/Music/Media.localized/Unknown Artist/Unknown Album/orchestralEmergency.mp3"; sourceTree = "<group>"; };
 		5FE35B672731C73900DC1EA2 /* HorsZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorsZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 			children = (
 				5FE35B872731CC8A00DC1EA2 /* MapKitViewController.swift */,
 				5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */,
+				5F275AF8273F236500F7C599 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */,
+				5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */,
 				5FE35B782731C73D00DC1EA2 /* LaunchScreen.storyboard */,
 				5FE35B762731C73D00DC1EA2 /* Assets.xcassets */,
 				5FE35B7B2731C73D00DC1EA2 /* Info.plist */,
@@ -194,6 +200,7 @@
 				5FE35B7A2731C73D00DC1EA2 /* LaunchScreen.storyboard in Resources */,
 				5FE35B772731C73D00DC1EA2 /* Assets.xcassets in Resources */,
 				5FE35B722731C73900DC1EA2 /* Main.storyboard in Resources */,
+				5FC3D87B273E6D210088ACA7 /* orchestralEmergency.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +214,7 @@
 				5FE35B752731C73900DC1EA2 /* HorsZone.xcdatamodeld in Sources */,
 				5FE35B8C2731D68700DC1EA2 /* ZoneIdentity.swift in Sources */,
 				5FE35B6B2731C73900DC1EA2 /* AppDelegate.swift in Sources */,
+				5F275AF9273F236500F7C599 /* SettingsViewController.swift in Sources */,
 				5FF11B092732B71F0015A023 /* ExtensionNsManagedObject.swift in Sources */,
 				5FE35B882731CC8A00DC1EA2 /* MapKitViewController.swift in Sources */,
 				5FE35B8E2731D99900DC1EA2 /* ExtensionMKPolygon.swift in Sources */,
@@ -366,7 +374,7 @@
 				DEVELOPMENT_TEAM = NLCUCTBNY2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HorsZone/SupportingFiles/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "in app active";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Cliquer sur \"Lorsque l'app est active\".  Cela permet de vous alertez si vous sortez de la zone.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -397,7 +405,7 @@
 				DEVELOPMENT_TEAM = NLCUCTBNY2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HorsZone/SupportingFiles/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "in app active";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Cliquer sur \"Lorsque l'app est active\".  Cela permet de vous alertez si vous sortez de la zone.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

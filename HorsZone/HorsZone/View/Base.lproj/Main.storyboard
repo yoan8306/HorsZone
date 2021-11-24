@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K7l-vR-zVh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K7l-vR-zVh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -57,7 +57,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dL9-JS-8i7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1704" y="631"/>
+            <point key="canvasLocation" x="-1755" y="-10"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="1rV-NT-cSE">
+            <objects>
+                <viewController id="GKd-t4-GDH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="07P-z9-G4Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="xdZ-R2-jPb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Setting" id="4Ao-Lj-Tre">
+                        <imageReference key="image" image="wrench.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LkI-Z5-GMp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1755" y="658"/>
         </scene>
         <!--MapZone-->
         <scene sceneID="fVg-gr-5G1">
@@ -199,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxV-8A-sSD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1704.3478260869567" y="-24.107142857142858"/>
+            <point key="canvasLocation" x="-1755" y="-729"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rSx-bJ-odd">
@@ -213,6 +232,7 @@
                     <connections>
                         <segue destination="bzE-FN-Jjw" kind="relationship" relationship="viewControllers" id="kyL-1Y-K6r"/>
                         <segue destination="EqH-sU-IPc" kind="relationship" relationship="viewControllers" id="Jgd-3T-iAd"/>
+                        <segue destination="GKd-t4-GDH" kind="relationship" relationship="viewControllers" id="s3O-34-fWD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3M2-aj-phR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -224,6 +244,7 @@
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="location.circle.fill" catalog="system" width="128" height="121"/>
         <image name="map" catalog="system" width="128" height="110"/>
+        <image name="wrench.fill" catalog="system" width="128" height="125"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
