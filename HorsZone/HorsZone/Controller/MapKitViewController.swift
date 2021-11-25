@@ -144,7 +144,8 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     /// Notification here
     @objc func checkPositionInPolygon() {
         counter += 1
-        if counter == 3 {
+        print(counter)
+        if counter == 5 {
             guard checkIfUserInPolygon() else {
                 playSong()
                 vibrate()
@@ -220,12 +221,11 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     /// check if user location is in polygonIdentity
     /// - Returns: if user is in polygon return true
     private func checkIfUserInPolygon() -> Bool {
-        if polygonIdentity.isEmpty {
-            return false
-        }
         for zone in polygonIdentity {
-            if zone.contain(coordonate: mapView.userLocation.coordinate) {
-                return true
+            if let userPostion = locationManager.location?.coordinate {
+                if zone.contain(coordonate: userPostion) {
+                    return true
+                }
             }
         }
         return false
