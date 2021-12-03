@@ -24,8 +24,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var startCheckPosition = false
     var polygonIdentity: [MKPolygon] = []
     var alertSong: AVAudioPlayer?
-    let notificationCenter = UNUserNotificationCenter.current()
-    let notification = UNMutableNotificationContent()
+    let Mynotification = LocalNotification()
     
     // MARK: - IBoutlet
     @IBOutlet weak var mapView: MKMapView!
@@ -38,8 +37,12 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let name = Notification.Name(rawValue: "SortieZone")
+        NotificationCenter.default.addObserver(self, selector: #selector(stopMonitoring),
+                                       name: name, object: nil)
         initializeMapView()
-        notificationInitialize()
+        Mynotification.notificationInitialize()
     }
     
     /// take first point for make polygon
@@ -77,22 +80,26 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         polygonIdentity.append(polygon)
         
         //for save point
-//        let newCoordinate = ZoneIdentify(context: AppDelegate.viewContext)
-//        newCoordinate.name = "test"
-//        for element in points {
-//            let newPointsPolyline = PointList(context: AppDelegate.viewContext)
-//            newPointsPolyline.latitudeY = element.latitude
-//            newPointsPolyline.longitudeX = element.longitude
-//            newPointsPolyline.zoneIdentify = newCoordinate
-//            try? AppDelegate.viewContext.save()
-//        }
-//        print(newCoordinate.pointList)
-//        try? AppDelegate.viewContext.save()
+        //        let newCoordinate = ZoneIdentify(context: AppDelegate.viewContext)
+        //        newCoordinate.name = "test"
+        //        for element in points {
+        //            let newPointsPolyline = PointList(context: AppDelegate.viewContext)
+        //            newPointsPolyline.latitudeY = element.latitude
+        //            newPointsPolyline.longitudeX = element.longitude
+        //            newPointsPolyline.zoneIdentify = newCoordinate
+        //            try? AppDelegate.viewContext.save()
+        //        }
+        //        print(newCoordinate.pointList)
+        //        try? AppDelegate.viewContext.save()
         
         points = [] // Reset points
     }
     
     // MARK: - IBAction
+    
+    @objc func stopMonitoring() {
+        startMonitoringOff()
+    }
     
     /// disable user interface for draw polygon
     /// - Parameter sender: switch addZone
@@ -144,13 +151,9 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     /// Notification here
     @objc func checkPositionInPolygon() {
         counter += 1
-        print(counter)
         if counter == 5 {
             guard checkIfUserInPolygon() else {
-                playSong()
-                vibrate()
-                sendNotification()
-                presentAlert_Alert(alertMessage: "vous avez quitté la zone")
+                makeAlerte()
                 counter = 0
                 return
             }
@@ -161,32 +164,16 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     /// erase last zone. no functionnaly
     @IBAction func cleanLastZoneAction(_ sender: Any) {
-//  remove all zone modify on going
+        //  remove all zone modify on going
         mapView.removeOverlays(mapView.overlays)
         polygonIdentity.removeAll()
+        //        let lastOverlay = mapView.overlays.count - 1
+        //        mapView.removeOverlay(mapView.overlays[lastOverlay])
+        //        polygonIdentity.remove(at: polygonIdentity.count - 1)
     }
     
     
     // MARK: - Private function
-    
-    private func notificationInitialize() {
-        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-            if granted {
-            }
-        }
-    }
-    
-    private func sendNotification() {
-        notification.title = "Attention !!!"
-        notification.body = "Vous êtes sortis de votre zone !"
-        notification.badge = 1
-        notification.sound = UNNotificationSound.default
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        
-        let notificationRequest = UNNotificationRequest(identifier: UUID().uuidString, content: notification, trigger: trigger)
-                notificationCenter.add(notificationRequest)
-    }
     
     private func initializeMapView() {
         mapView.delegate = self
@@ -259,11 +246,12 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         cleanLastZoneButton.isHidden = false
     }
     
-    private func startMonitoringOff() {
+    public func startMonitoringOff() {
         UIApplication.shared.applicationIconBadgeNumber = 0
         locationManager.allowsBackgroundLocationUpdates = false
         startMonitoringButton.backgroundColor? = .init(red: 0, green: 0, blue: 0, alpha: 0)
         startCheckPosition = false
+        startMonitoringButton.setTitle("Start monitoring", for: .normal)
         timer?.invalidate()
     }
     
@@ -275,18 +263,26 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                                      selector: #selector(checkPositionInPolygon), userInfo: nil, repeats: true)
         startMonitoringButton.backgroundColor = #colorLiteral(red: 0, green: 0.9866302609, blue: 0.837818563, alpha: 0.699257234)
         startMonitoringButton.layer.cornerRadius = startMonitoringButton.frame.height / 2
+        startMonitoringButton.setTitle("Stop monitoring", for: .normal)
         animateMonitoringButton()
+    }
+    
+    private func makeAlerte() {
+        playSong()
+        vibrate()
+        Mynotification.sendNotification()
+        presentAlert_Alert(alertMessage: "vous avez quitté la zone")
     }
     
     private func playSong() {
         let path = Bundle.main.path(forResource: "orchestralEmergency.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
-
+        
         do {
             alertSong = try AVAudioPlayer(contentsOf: url)
             alertSong?.play()
         } catch {
-           print("file isn't  food!")
+            print("file isn't  food!")
         }
     }
     
@@ -307,6 +303,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
 }
 
 // MARK: - Function MapKit, location Manager
+
 extension MapKitViewController {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if canAddZone {
@@ -346,7 +343,7 @@ extension MapKitViewController {
         
         guard let speed = manager.location?.speed else { return }
         let speedConverted = speed / 1000 * 3600
-        speedLabel.text = speed < 0 ? "No movement registered" : String(format: "%.0f", speedConverted) + " km/h"
+        speedLabel.text = speed < 0 ? "0 km/h" : String(format: "%.0f", speedConverted) + " km/h"
         
         let polylines = MKPolyline(coordinates: &pointUserHistory, count: pointUserHistory.count)
         mapView.addOverlay(polylines)
@@ -356,4 +353,3 @@ extension MapKitViewController {
         roadViewer.lineWidth = 3
     }
 }
-

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1816BB2756D09600F58F69 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1816BA2756D09600F58F69 /* LocalNotification.swift */; };
 		5F275AF9273F236500F7C599 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F275AF8273F236500F7C599 /* SettingsViewController.swift */; };
 		5F6011DD2739D85F00B857A6 /* PointList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6011DC2739D85F00B857A6 /* PointList.swift */; };
+		5F76FCC62754CA9300DDC6B1 /* orchestralEmergency.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */; };
 		5FC3D87B273E6D210088ACA7 /* orchestralEmergency.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */; };
 		5FE35B6B2731C73900DC1EA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */; };
 		5FE35B6D2731C73900DC1EA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */; };
@@ -24,8 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F1816BA2756D09600F58F69 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		5F275AF8273F236500F7C599 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5F6011DC2739D85F00B857A6 /* PointList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointList.swift; sourceTree = "<group>"; };
+		5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = orchestralEmergency.caf; sourceTree = "<group>"; };
 		5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = orchestralEmergency.mp3; path = "../../../../../../Music/Music/Media.localized/Unknown Artist/Unknown Album/orchestralEmergency.mp3"; sourceTree = "<group>"; };
 		5FE35B672731C73900DC1EA2 /* HorsZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorsZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 			children = (
 				5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */,
 				5F6011DC2739D85F00B857A6 /* PointList.swift */,
+				5F1816BA2756D09600F58F69 /* LocalNotification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,11 +118,12 @@
 			isa = PBXGroup;
 			children = (
 				5FE35B6A2731C73900DC1EA2 /* AppDelegate.swift */,
+				5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */,
 				5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */,
+				5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */,
 				5FE35B782731C73D00DC1EA2 /* LaunchScreen.storyboard */,
 				5FE35B762731C73D00DC1EA2 /* Assets.xcassets */,
 				5FE35B7B2731C73D00DC1EA2 /* Info.plist */,
-				5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -199,6 +205,7 @@
 			files = (
 				5FE35B7A2731C73D00DC1EA2 /* LaunchScreen.storyboard in Resources */,
 				5FE35B772731C73D00DC1EA2 /* Assets.xcassets in Resources */,
+				5F76FCC62754CA9300DDC6B1 /* orchestralEmergency.caf in Resources */,
 				5FE35B722731C73900DC1EA2 /* Main.storyboard in Resources */,
 				5FC3D87B273E6D210088ACA7 /* orchestralEmergency.mp3 in Resources */,
 			);
@@ -220,6 +227,7 @@
 				5FE35B8E2731D99900DC1EA2 /* ExtensionMKPolygon.swift in Sources */,
 				5FE35B6D2731C73900DC1EA2 /* SceneDelegate.swift in Sources */,
 				5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */,
+				5F1816BB2756D09600F58F69 /* LocalNotification.swift in Sources */,
 				5F6011DD2739D85F00B857A6 /* PointList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
