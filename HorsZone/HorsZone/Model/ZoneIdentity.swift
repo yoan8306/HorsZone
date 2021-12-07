@@ -17,5 +17,3 @@ class ZoneIdentify: NSManagedObject {
         return zoneIdentify
     }
 }
-
-
