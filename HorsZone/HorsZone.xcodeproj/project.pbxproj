@@ -24,6 +24,7 @@
 		5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */; };
 		5FE35B8C2731D68700DC1EA2 /* ZoneIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */; };
 		5FE35B8E2731D99900DC1EA2 /* ExtensionMKPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B8D2731D99900DC1EA2 /* ExtensionMKPolygon.swift */; };
+		5FEA1EA42761647000ED8005 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA1EA32761647000ED8005 /* Zone.swift */; };
 		5FF11B092732B71F0015A023 /* ExtensionNsManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF11B082732B71F0015A023 /* ExtensionNsManagedObject.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListZoneViewController.swift; sourceTree = "<group>"; };
 		5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneIdentity.swift; sourceTree = "<group>"; };
 		5FE35B8D2731D99900DC1EA2 /* ExtensionMKPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMKPolygon.swift; sourceTree = "<group>"; };
+		5FEA1EA32761647000ED8005 /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
 		5FF11B082732B71F0015A023 /* ExtensionNsManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNsManagedObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,7 @@
 				5F6011DC2739D85F00B857A6 /* PointList.swift */,
 				5F1816BA2756D09600F58F69 /* LocalNotification.swift */,
 				5FBBCF1D275AD67200E097C8 /* SettingsService.swift */,
+				5FEA1EA32761647000ED8005 /* Zone.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				5FBBCF1E275AD67200E097C8 /* SettingsService.swift in Sources */,
 				5FE35B8E2731D99900DC1EA2 /* ExtensionMKPolygon.swift in Sources */,
 				5FE35B6D2731C73900DC1EA2 /* SceneDelegate.swift in Sources */,
+				5FEA1EA42761647000ED8005 /* Zone.swift in Sources */,
 				5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */,
 				5FBBCF20275ADBDA00E097C8 /* LanguageViewController.swift in Sources */,
 				5F1816BB2756D09600F58F69 /* LocalNotification.swift in Sources */,

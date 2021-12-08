@@ -135,6 +135,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Réglages" largeTitleDisplayMode="always" id="uXJ-wv-L62"/>
                     <connections>
+                        <outlet property="tableView" destination="mg5-iy-hb1" id="G6f-H0-3NL"/>
                         <segue destination="GMv-sZ-5At" kind="show" identifier="SelectLanguage" id="rH2-Ck-ZrN"/>
                     </connections>
                 </viewController>
