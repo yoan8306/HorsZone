@@ -9,7 +9,7 @@ import UIKit
 
 class LanguageViewController: UITableViewController {
     var checked = [Bool]()
-    var choices = ["English", "French", "Polska", "Deutsh", "Spanish"]
+    let listLanguage = LanguageAvailable.allCases
     var selected = UserDefaults.standard.string(forKey: SettingService.language)
 
     override func viewDidLoad() {
@@ -28,11 +28,11 @@ class LanguageViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "languageChoiceCell", for: indexPath)
-        cell.textLabel?.text = choices[indexPath.row]
+        cell.textLabel?.text = listLanguage[indexPath.row].rawValue
 
-        if !(choices[indexPath.row] == selected) {
+        if !(listLanguage[indexPath.row].rawValue == selected) {
             cell.accessoryType = .none
-        } else if choices[indexPath.row] == selected {
+        } else if listLanguage[indexPath.row].rawValue == selected {
             cell.accessoryType = .checkmark
         }
 
@@ -44,12 +44,12 @@ class LanguageViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return choices.count
+        return listLanguage.count
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
-        if choices[indexPath.row] == selected {
+        if listLanguage[indexPath.row].rawValue == selected {
             tableView.selectRow(at: indexPath,
                                 animated: false,
                                 scrollPosition: UITableView.ScrollPosition.none)
@@ -58,15 +58,15 @@ class LanguageViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // If we are selecting a row that is already checked we do nothing
-        guard !(choices[indexPath.row] == selected) else { return }
+        guard !(listLanguage[indexPath.row].rawValue == selected) else { return }
 
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .checkmark {
                 cell.accessoryType = .none
-                selected = choices[indexPath.row]
+                selected = listLanguage[indexPath.row].rawValue
             } else {
                 cell.accessoryType = .checkmark
-                selected = choices[indexPath.row]
+                selected = listLanguage[indexPath.row].rawValue
             }
         }
         updateLangueSelected()
@@ -76,10 +76,10 @@ class LanguageViewController: UITableViewController {
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .checkmark {
                 cell.accessoryType = .none
-                selected = choices[indexPath.row]
+                selected = listLanguage[indexPath.row].rawValue
             } else {
                 cell.accessoryType = .checkmark
-                selected = choices[indexPath.row]
+                selected = listLanguage[indexPath.row].rawValue
             }
         }
         updateLangueSelected()
@@ -89,5 +89,4 @@ class LanguageViewController: UITableViewController {
         let defaults = UserDefaults.standard
         defaults.set(selected, forKey: SettingService.language)
     }
-
 }

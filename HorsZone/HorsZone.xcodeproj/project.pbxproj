@@ -11,6 +11,7 @@
 		5F275AF9273F236500F7C599 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F275AF8273F236500F7C599 /* SettingsViewController.swift */; };
 		5F6011DD2739D85F00B857A6 /* PointList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6011DC2739D85F00B857A6 /* PointList.swift */; };
 		5F76FCC62754CA9300DDC6B1 /* orchestralEmergency.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */; };
+		5F8B2FD7276227CE008DA2D8 /* LangaugeAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2FD6276227CE008DA2D8 /* LangaugeAvailable.swift */; };
 		5FBBCF1E275AD67200E097C8 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBBCF1D275AD67200E097C8 /* SettingsService.swift */; };
 		5FBBCF20275ADBDA00E097C8 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBBCF1F275ADBDA00E097C8 /* LanguageViewController.swift */; };
 		5FC3D87B273E6D210088ACA7 /* orchestralEmergency.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */; };
@@ -33,6 +34,7 @@
 		5F275AF8273F236500F7C599 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5F6011DC2739D85F00B857A6 /* PointList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointList.swift; sourceTree = "<group>"; };
 		5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = orchestralEmergency.caf; sourceTree = "<group>"; };
+		5F8B2FD6276227CE008DA2D8 /* LangaugeAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangaugeAvailable.swift; sourceTree = "<group>"; };
 		5FBBCF1D275AD67200E097C8 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		5FBBCF1F275ADBDA00E097C8 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = orchestralEmergency.mp3; path = "../../../../../../Music/Music/Media.localized/Unknown Artist/Unknown Album/orchestralEmergency.mp3"; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F8B2FD5276227AE008DA2D8 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				5F8B2FD6276227CE008DA2D8 /* LangaugeAvailable.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		5FE35B5E2731C73900DC1EA2 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 		5FE35B862731C83800DC1EA2 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				5F8B2FD5276227AE008DA2D8 /* Enum */,
 				5FE35B732731C73900DC1EA2 /* HorsZone.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -230,6 +241,7 @@
 				5FE35B752731C73900DC1EA2 /* HorsZone.xcdatamodeld in Sources */,
 				5FE35B8C2731D68700DC1EA2 /* ZoneIdentity.swift in Sources */,
 				5FE35B6B2731C73900DC1EA2 /* AppDelegate.swift in Sources */,
+				5F8B2FD7276227CE008DA2D8 /* LangaugeAvailable.swift in Sources */,
 				5F275AF9273F236500F7C599 /* SettingsViewController.swift in Sources */,
 				5FF11B092732B71F0015A023 /* ExtensionNsManagedObject.swift in Sources */,
 				5FE35B882731CC8A00DC1EA2 /* MapKitViewController.swift in Sources */,
