@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5F1816BB2756D09600F58F69 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1816BA2756D09600F58F69 /* LocalNotification.swift */; };
+		5F1DD5422763349300BB3B89 /* English.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1DD5412763349300BB3B89 /* English.swift */; };
 		5F275AF9273F236500F7C599 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F275AF8273F236500F7C599 /* SettingsViewController.swift */; };
 		5F6011DD2739D85F00B857A6 /* PointList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6011DC2739D85F00B857A6 /* PointList.swift */; };
 		5F76FCC62754CA9300DDC6B1 /* orchestralEmergency.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */; };
 		5F8B2FD7276227CE008DA2D8 /* LangaugeAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2FD6276227CE008DA2D8 /* LangaugeAvailable.swift */; };
+		5FB9B95E276544E600BB9AEC /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB9B95D276544E600BB9AEC /* Translate.swift */; };
 		5FBBCF1E275AD67200E097C8 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBBCF1D275AD67200E097C8 /* SettingsService.swift */; };
 		5FBBCF20275ADBDA00E097C8 /* LanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBBCF1F275ADBDA00E097C8 /* LanguageViewController.swift */; };
 		5FC3D87B273E6D210088ACA7 /* orchestralEmergency.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */; };
@@ -31,10 +33,12 @@
 
 /* Begin PBXFileReference section */
 		5F1816BA2756D09600F58F69 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		5F1DD5412763349300BB3B89 /* English.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = English.swift; sourceTree = "<group>"; };
 		5F275AF8273F236500F7C599 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5F6011DC2739D85F00B857A6 /* PointList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointList.swift; sourceTree = "<group>"; };
 		5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = orchestralEmergency.caf; sourceTree = "<group>"; };
 		5F8B2FD6276227CE008DA2D8 /* LangaugeAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangaugeAvailable.swift; sourceTree = "<group>"; };
+		5FB9B95D276544E600BB9AEC /* Translate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		5FBBCF1D275AD67200E097C8 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		5FBBCF1F275ADBDA00E097C8 /* LanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewController.swift; sourceTree = "<group>"; };
 		5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = orchestralEmergency.mp3; path = "../../../../../../Music/Music/Media.localized/Unknown Artist/Unknown Album/orchestralEmergency.mp3"; sourceTree = "<group>"; };
@@ -65,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F1DD5402763347700BB3B89 /* Languages */ = {
+			isa = PBXGroup;
+			children = (
+				5F8B2FD5276227AE008DA2D8 /* Enum */,
+				5F1DD5412763349300BB3B89 /* English.swift */,
+			);
+			path = Languages;
+			sourceTree = "<group>";
+		};
 		5F8B2FD5276227AE008DA2D8 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +105,7 @@
 		5FE35B692731C73900DC1EA2 /* HorsZone */ = {
 			isa = PBXGroup;
 			children = (
+				5F1DD5402763347700BB3B89 /* Languages */,
 				5FE35B862731C83800DC1EA2 /* CoreData */,
 				5FE35B852731C82C00DC1EA2 /* Extension */,
 				5FE35B842731C82000DC1EA2 /* SupportingFiles */,
@@ -129,6 +143,7 @@
 				5F1816BA2756D09600F58F69 /* LocalNotification.swift */,
 				5FBBCF1D275AD67200E097C8 /* SettingsService.swift */,
 				5FEA1EA32761647000ED8005 /* Zone.swift */,
+				5FB9B95D276544E600BB9AEC /* Translate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,7 +174,6 @@
 		5FE35B862731C83800DC1EA2 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				5F8B2FD5276227AE008DA2D8 /* Enum */,
 				5FE35B732731C73900DC1EA2 /* HorsZone.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -240,6 +254,7 @@
 			files = (
 				5FE35B752731C73900DC1EA2 /* HorsZone.xcdatamodeld in Sources */,
 				5FE35B8C2731D68700DC1EA2 /* ZoneIdentity.swift in Sources */,
+				5F1DD5422763349300BB3B89 /* English.swift in Sources */,
 				5FE35B6B2731C73900DC1EA2 /* AppDelegate.swift in Sources */,
 				5F8B2FD7276227CE008DA2D8 /* LangaugeAvailable.swift in Sources */,
 				5F275AF9273F236500F7C599 /* SettingsViewController.swift in Sources */,
@@ -252,6 +267,7 @@
 				5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */,
 				5FBBCF20275ADBDA00E097C8 /* LanguageViewController.swift in Sources */,
 				5F1816BB2756D09600F58F69 /* LocalNotification.swift in Sources */,
+				5FB9B95E276544E600BB9AEC /* Translate.swift in Sources */,
 				5F6011DD2739D85F00B857A6 /* PointList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

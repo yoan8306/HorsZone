@@ -194,6 +194,7 @@
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLP-ni-pBs">
                                 <rect key="frame" x="328.5" y="742" width="65.5" height="23"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NLP-ni-pBs" secondAttribute="height" multiplier="20:7" id="YYT-oW-4kh"/>
                                     <constraint firstAttribute="height" constant="23" id="nAk-zW-XKi"/>
@@ -267,17 +268,22 @@
                                     <action selector="cleanLastZoneAction:" destination="bzE-FN-Jjw" eventType="touchUpInside" id="ygO-XY-WSK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dm-76-Bfc">
-                                <rect key="frame" x="10" y="731" width="140" height="34"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dm-76-Bfc">
+                                <rect key="frame" x="10" y="735" width="310.5" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Start monitoring">
-                                    <color key="titleShadowColor" red="0.99583572149999999" green="0.98051899669999998" blue="0.9352718592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" title="Start monitoring"/>
                                 <connections>
                                     <action selector="startMonitoringActionButton" destination="bzE-FN-Jjw" eventType="touchUpInside" id="y2o-kQ-Nz4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adress user" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwu-zV-F3I">
+                                <rect key="frame" x="10" y="707.5" width="341" height="20.5"/>
+                                <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bL1-Nr-OjM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -286,14 +292,14 @@
                             <constraint firstItem="IN1-rn-eMX" firstAttribute="top" secondItem="bL1-Nr-OjM" secondAttribute="top" constant="20" id="A0R-PJ-TMy"/>
                             <constraint firstItem="IN1-rn-eMX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rm7-6x-QPP" secondAttribute="trailing" constant="8" symbolic="YES" id="APn-9h-YAc"/>
                             <constraint firstItem="6dm-76-Bfc" firstAttribute="leading" secondItem="B5h-hg-1vo" secondAttribute="leading" constant="10" id="Cvl-Wp-TcM"/>
-                            <constraint firstItem="roj-ZR-bZg" firstAttribute="top" secondItem="bL1-Nr-OjM" secondAttribute="top" id="KkZ-Z3-XCc"/>
+                            <constraint firstItem="6dm-76-Bfc" firstAttribute="top" secondItem="uwu-zV-F3I" secondAttribute="bottom" constant="7" id="Dnd-FG-BkT"/>
                             <constraint firstItem="bL1-Nr-OjM" firstAttribute="trailing" secondItem="roj-ZR-bZg" secondAttribute="trailing" id="NLg-mb-fVA"/>
                             <constraint firstItem="pnq-QY-lNi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bL1-Nr-OjM" secondAttribute="leading" symbolic="YES" id="Oea-8v-Nop"/>
                             <constraint firstItem="NLP-ni-pBs" firstAttribute="bottom" secondItem="6dm-76-Bfc" secondAttribute="bottom" id="Rb3-oe-p2s"/>
                             <constraint firstItem="bL1-Nr-OjM" firstAttribute="bottom" secondItem="roj-ZR-bZg" secondAttribute="bottom" id="TqR-Ee-YII"/>
                             <constraint firstItem="3K8-qz-Akj" firstAttribute="top" secondItem="Rm7-6x-QPP" secondAttribute="bottom" constant="8" id="WBt-EE-FQ3"/>
                             <constraint firstItem="3K8-qz-Akj" firstAttribute="leading" secondItem="bL1-Nr-OjM" secondAttribute="leading" constant="20" id="ZZS-7u-WkK"/>
-                            <constraint firstItem="NLP-ni-pBs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6dm-76-Bfc" secondAttribute="trailing" constant="8" symbolic="YES" id="a4b-84-u9t"/>
+                            <constraint firstItem="NLP-ni-pBs" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6dm-76-Bfc" secondAttribute="trailing" constant="8" symbolic="YES" id="a4b-84-u9t"/>
                             <constraint firstItem="roj-ZR-bZg" firstAttribute="leading" secondItem="bL1-Nr-OjM" secondAttribute="leading" id="cPU-nP-h9K"/>
                             <constraint firstItem="NLP-ni-pBs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bL1-Nr-OjM" secondAttribute="leading" symbolic="YES" id="fUx-DU-lRR"/>
                             <constraint firstItem="bL1-Nr-OjM" firstAttribute="trailing" secondItem="NLP-ni-pBs" secondAttribute="trailing" constant="20" id="gwm-dl-feo"/>
@@ -302,8 +308,11 @@
                             <constraint firstItem="alm-U4-yb0" firstAttribute="leading" secondItem="bL1-Nr-OjM" secondAttribute="leading" id="ouV-7G-tZF"/>
                             <constraint firstItem="Rm7-6x-QPP" firstAttribute="top" secondItem="bL1-Nr-OjM" secondAttribute="top" constant="20" id="qOx-TN-6nj"/>
                             <constraint firstItem="bL1-Nr-OjM" firstAttribute="bottom" secondItem="alm-U4-yb0" secondAttribute="bottom" id="tN5-y1-1mr"/>
+                            <constraint firstItem="uwu-zV-F3I" firstAttribute="leading" secondItem="bL1-Nr-OjM" secondAttribute="leading" constant="10" id="tYK-LT-oZI"/>
+                            <constraint firstItem="pnq-QY-lNi" firstAttribute="leading" secondItem="uwu-zV-F3I" secondAttribute="trailing" constant="10" id="ur7-cc-BRE"/>
                             <constraint firstItem="alm-U4-yb0" firstAttribute="top" secondItem="NLP-ni-pBs" secondAttribute="bottom" constant="8" id="vz2-fP-tJ6"/>
                             <constraint firstItem="bL1-Nr-OjM" firstAttribute="trailing" secondItem="pnq-QY-lNi" secondAttribute="trailing" constant="22" id="wBM-gp-nAE"/>
+                            <constraint firstItem="roj-ZR-bZg" firstAttribute="top" secondItem="bL1-Nr-OjM" secondAttribute="top" id="wfo-zg-okQ"/>
                             <constraint firstItem="Rm7-6x-QPP" firstAttribute="leading" secondItem="bL1-Nr-OjM" secondAttribute="leading" constant="20" id="yHn-oK-NOh"/>
                         </constraints>
                     </view>
@@ -311,9 +320,11 @@
                         <imageReference key="image" image="map" catalog="system" symbolScale="large" renderingMode="template"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="addZoneLabel" destination="Rm7-6x-QPP" id="PVf-UA-XNT"/>
                         <outlet property="addZoneSwitch" destination="3K8-qz-Akj" id="5lN-vr-m2U"/>
                         <outlet property="cleanLastZoneButton" destination="IN1-rn-eMX" id="bll-St-gfO"/>
                         <outlet property="mapView" destination="roj-ZR-bZg" id="XPc-Tk-auD"/>
+                        <outlet property="positionAdressUserLabel" destination="uwu-zV-F3I" id="T1v-MM-Vqx"/>
                         <outlet property="segmentedMap" destination="alm-U4-yb0" id="yE3-5x-XiH"/>
                         <outlet property="speedLabel" destination="NLP-ni-pBs" id="hpD-O6-ZPL"/>
                         <outlet property="startMonitoringButton" destination="6dm-76-Bfc" id="bQD-WQ-vYa"/>
@@ -321,7 +332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxV-8A-sSD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1755" y="-729"/>
+            <point key="canvasLocation" x="-1755.072463768116" y="-729.24107142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rSx-bJ-odd">
@@ -352,6 +363,9 @@
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

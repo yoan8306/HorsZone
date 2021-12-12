@@ -11,6 +11,7 @@ import UIKit
 class LocalNotification {
     let notificationCenter = UNUserNotificationCenter.current()
     let notification = UNMutableNotificationContent()
+    let translateText = Translate()
 
     func notificationInitialize() {
         prepareMyAlert()
@@ -30,7 +31,7 @@ class LocalNotification {
     private func prepareMyAlert() {
 
         notification.title = "Attention !!!"
-        notification.body = "Vous êtes sortis de votre zone !"
+        notification.body = translateText.alertLeftZoneMessage()
         notification.categoryIdentifier = "StopMonitoring.category"
         notification.badge = 1
         notification.sound = UNNotificationSound.default
