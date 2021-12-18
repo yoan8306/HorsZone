@@ -112,6 +112,61 @@ class Translate {
         }
     }
     
+    func mapBarItem() -> String {
+        let language = languageSelected()
+        switch language {
+        case .english:
+            return "Map"
+        case .french:
+            return "Plan"
+        case .spanish:
+            return "Mapa"
+        case .deutsh:
+            return "Karte"
+        }
+    }
+    
+    func settingBarItem() -> String {
+        let language = languageSelected()
+        switch language {
+        case .english:
+            return "Settings"
+        case .french:
+            return "Réglages"
+        case .spanish:
+            return "Ajustes"
+        case .deutsh:
+            return "Einstellungen"
+        }
+    }
+    
+    func navigationTitle() -> String {
+        let language = languageSelected()
+        switch language {
+        case .english:
+            return "Settings"
+        case .french:
+            return "Réglages"
+        case .spanish:
+            return "Ajustes"
+        case .deutsh:
+            return "Einstellungen"
+        }
+    }
+    
+     func settingList() -> [String] {
+        let language = languageSelected()
+        switch language {
+        case .english:
+            return ["Settings", "Notification"]
+        case .french:
+            return ["Réglages", "Notification"]
+        case .spanish:
+            return ["Ajustes", "Notificación"]
+        case .deutsh:
+            return ["Einstellungen", "Benachrichtigung"]
+        }
+    }
     
     private func languageSelected() -> LanguageAvailable {
         var languageSelected = LanguageAvailable.english
@@ -122,5 +177,7 @@ class Translate {
         }
         return languageSelected
     }
+    
+    
     
 }

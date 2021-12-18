@@ -28,10 +28,12 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var alertSong: AVAudioPlayer?
     let myNotification = LocalNotification()
     var translateText = Translate()
-
+    var myHeading = HeadingView()
+    var tapped = true
     
     
     // MARK: - IBoutlet
+    @IBOutlet weak var mapBarItem: UITabBarItem!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var segmentedMap: UISegmentedControl!
     @IBOutlet weak var speedLabel: UILabel!
@@ -50,6 +52,9 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                                                name: name, object: nil)
         initializeMapView()
         myNotification.notificationInitialize()
+        let tapped = UITapGestureRecognizer.init(target: self, action: #selector(MapKitViewController.tappedAdressLabel(_:)))
+        positionAdressUserLabel.isUserInteractionEnabled = true
+        positionAdressUserLabel.addGestureRecognizer(tapped)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,7 +109,6 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         //        }
         //        print(newCoordinate.pointList)
         //        try? AppDelegate.viewContext.save()
-        
         points = [] // Reset points
     }
     
@@ -186,6 +190,25 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         //        polygonIdentity.remove(at: polygonIdentity.count - 1)
     }
     
+    @IBAction func tappedAdressLabel(_ sender: UITapGestureRecognizer) {
+        switch sender.state {
+        case .ended, .began, .changed:
+            print("Tapped ok change true or false")
+            print(tapped)
+            if tapped {
+                tapped = false
+            } else {
+                tapped = true
+            }
+        case .cancelled, .failed:
+            print("Tapped no action")
+            return
+        default:
+            return
+        }
+    }
+    
+    
     // MARK: - Private function
     
     private func initializeMapView() {
@@ -199,8 +222,8 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
-        positionAdressUserLabel.layer.cornerRadius = 12
-        speedLabel.layer.cornerRadius = 12
+        positionAdressUserLabel.layer.cornerRadius = 30
+        speedLabel.layer.cornerRadius = 30
         mapView.setUserTrackingMode(.followWithHeading, animated: true)
     }
     
@@ -208,6 +231,8 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         startMonitoringButton.setTitle(translateText.buttonStartMonitoringText(), for: .normal)
         addZoneLabel.text = translateText.addZoneLabelText()
         cleanLastZoneButton.setTitle(translateText.cancelButtonText(), for: .normal)
+        mapBarItem.title = translateText.mapBarItem()
+        
     }
     
     private func segmentedMapStyle(segmentIndex: Int) {
@@ -268,7 +293,6 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     public func startMonitoringOff() {
         UIApplication.shared.applicationIconBadgeNumber = 0
-//        locationManager.stopUpdatingLocation()
         locationManager.allowsBackgroundLocationUpdates = false
         startMonitoringButton.backgroundColor? = .init(red: 0, green: 0, blue: 0, alpha: 0)
         startCheckPosition = false
@@ -278,8 +302,6 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     /// initialize timer and launch checkPositionInPolygon()
     private func startMonitoringOn() {
-        
-//        locationManager.startUpdatingLocation()
         locationManager.allowsBackgroundLocationUpdates = true
         startCheckPosition = true
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,
@@ -398,22 +420,31 @@ extension MapKitViewController {
     private func createAdress(firstPlace: CLPlacemark ) {
         var addressString = ""
         
-        if let name = firstPlace.name, name != firstPlace.postalCode {
-            addressString = addressString + name + ", "
+        if tapped {
+            if let name = firstPlace.name {
+                addressString = addressString + name + ", "
+            }
+            if let subLocality = firstPlace.subLocality {
+                addressString = addressString + subLocality
+            }
+                    if let thoroughfare = firstPlace.thoroughfare {
+                        addressString = addressString + thoroughfare + " "
+                    }
+            //        if let postalCode = firstPlace.postalCode {
+            //            addressString = addressString + postalCode + ", "
+            //        }
+//                    if let locality = firstPlace.locality {
+//                        addressString = addressString + locality
+//                    }
+            //        }
+            //
+            
+        } else {
+            let coordinate = mapView.userLocation.coordinate
+            let latitude = coordinate.latitude
+            let longitude = coordinate.longitude
+            addressString = "Latitude: " + String(format: "%.6f", latitude) + "\nLongitude: " + String(format: "%.6f", longitude)
         }
-        if let subLocality = firstPlace.subLocality {
-            addressString = addressString + subLocality + ", "
-        }
-        if let thoroughfare = firstPlace.thoroughfare {
-            addressString = addressString + thoroughfare + ", "
-        }
-        if let postalCode = firstPlace.postalCode {
-            addressString = addressString + postalCode + ", "
-        }
-        if let locality = firstPlace.locality {
-            addressString = addressString + locality
-        }
-        
         self.positionAdressUserLabel.text = addressString
     }
 }

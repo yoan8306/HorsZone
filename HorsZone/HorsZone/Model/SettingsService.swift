@@ -20,4 +20,5 @@ class SettingService {
             UserDefaults.standard.set(newValue, forKey: Keys.language)
         }
     }
+    
 }

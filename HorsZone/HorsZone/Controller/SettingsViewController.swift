@@ -10,22 +10,34 @@ import UIKit
 class SettingsViewController: UIViewController {
     
     // MARK: - Properties
-    let settingsList = ["Langues", "Son des alertes"]
-    
+    var settingsList = Translate().settingList()
+    var translateText = Translate()
+   
     
     // MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var settingsNavigationItem: UINavigationItem!
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        settingsList = Translate().settingList()
         super.viewWillAppear(animated)
+        translateText = Translate()
         tableView.reloadData()
+        initializeTranslateView()
     }
+    
+    private func initializeTranslateView() {
+        settingsNavigationItem.title = translateText.settingBarItem()
+//        SettingNavigationViewController().initializeLanguage()
+    }
+
+    
 }
+
 
 // MARK: - Table View Data source
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -38,7 +50,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCells", for: indexPath)
         cell.textLabel?.text = settingsList[indexPath.row]
         
-        if settingsList[indexPath.row] == "Langues" {
+        if indexPath.row == 0 {
             cell.detailTextLabel?.text = languageSelected
         }
         
@@ -47,7 +59,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let identifier = indexPath
-        if settingsList[identifier.row] == "Langues" {
+        if identifier.row == 0 {
             performSegue(withIdentifier: "SelectLanguage", sender: self)
         }
     }

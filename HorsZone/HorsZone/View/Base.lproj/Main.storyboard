@@ -57,13 +57,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dL9-JS-8i7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1755" y="-10"/>
+            <point key="canvasLocation" x="-1755" y="-8"/>
         </scene>
-        <!--Réglages-->
+        <!--Settings-->
         <scene sceneID="sNB-BC-xVL">
             <objects>
-                <navigationController id="hLy-jF-SuL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Réglages" id="4y4-Ic-2O6">
+                <navigationController id="hLy-jF-SuL" customClass="SettingNavigationViewController" customModule="HorsZone" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" id="4y4-Ic-2O6">
                         <imageReference key="image" image="gear" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -74,14 +74,16 @@
                         <color key="barTintColor" red="0.74498045440000005" green="0.86698961259999996" blue="0.61033546920000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
+                        <outlet property="navigationTitle" destination="i1L-g5-u6w" id="FYa-Mr-BIV"/>
+                        <outlet property="settingBarItem" destination="4y4-Ic-2O6" id="Z06-Gi-ohP"/>
                         <segue destination="tEE-BY-oef" kind="relationship" relationship="rootViewController" id="hlP-SG-XxT"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vL-b1-QGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1755" y="717"/>
+            <point key="canvasLocation" x="-1755" y="682"/>
         </scene>
-        <!--Réglages-->
+        <!--Settings-->
         <scene sceneID="wPD-l2-4zp">
             <objects>
                 <viewController id="tEE-BY-oef" customClass="SettingsViewController" customModule="HorsZone" customModuleProvider="target" sceneMemberID="viewController">
@@ -100,14 +102,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hpo-aB-dbe">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hpo-aB-dbe">
                                                     <rect key="frame" x="20" y="6" width="25" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qsH-1o-ltY">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qsH-1o-ltY">
                                                     <rect key="frame" x="20" y="22.5" width="40.5" height="13.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
@@ -133,8 +135,10 @@
                             <constraint firstItem="mg5-iy-hb1" firstAttribute="top" secondItem="zaF-pp-pZe" secondAttribute="top" id="pOA-fC-fPl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Réglages" largeTitleDisplayMode="always" id="uXJ-wv-L62"/>
+                    <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="always" id="uXJ-wv-L62"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="settingsNavigationItem" destination="uXJ-wv-L62" id="EGv-5x-b57"/>
                         <outlet property="tableView" destination="mg5-iy-hb1" id="G6f-H0-3NL"/>
                         <segue destination="GMv-sZ-5At" kind="show" identifier="SelectLanguage" id="rH2-Ck-ZrN"/>
                     </connections>
@@ -192,17 +196,16 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="roj-ZR-bZg">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLP-ni-pBs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 km/h" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLP-ni-pBs">
                                 <rect key="frame" x="328.5" y="742" width="65.5" height="23"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="separatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NLP-ni-pBs" secondAttribute="height" multiplier="20:7" id="YYT-oW-4kh"/>
                                     <constraint firstAttribute="height" constant="23" id="nAk-zW-XKi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.74909383060000001" green="0.76864182950000004" blue="0.78894788029999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnq-QY-lNi">
                                 <rect key="frame" x="361" y="703.5" width="31" height="30"/>
@@ -277,10 +280,14 @@
                                     <action selector="startMonitoringActionButton" destination="bzE-FN-Jjw" eventType="touchUpInside" id="y2o-kQ-Nz4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adress user" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwu-zV-F3I">
-                                <rect key="frame" x="10" y="707.5" width="341" height="20.5"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwu-zV-F3I">
+                                <rect key="frame" x="10" y="728" width="341" height="0.0"/>
                                 <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" selected="YES" staticText="YES"/>
+                                </accessibility>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -323,6 +330,7 @@
                         <outlet property="addZoneLabel" destination="Rm7-6x-QPP" id="PVf-UA-XNT"/>
                         <outlet property="addZoneSwitch" destination="3K8-qz-Akj" id="5lN-vr-m2U"/>
                         <outlet property="cleanLastZoneButton" destination="IN1-rn-eMX" id="bll-St-gfO"/>
+                        <outlet property="mapBarItem" destination="Geh-Ai-ozf" id="qok-M2-S0j"/>
                         <outlet property="mapView" destination="roj-ZR-bZg" id="XPc-Tk-auD"/>
                         <outlet property="positionAdressUserLabel" destination="uwu-zV-F3I" id="T1v-MM-Vqx"/>
                         <outlet property="segmentedMap" destination="alm-U4-yb0" id="yE3-5x-XiH"/>
@@ -331,6 +339,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxV-8A-sSD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Q5b-5d-fKx">
+                    <connections>
+                        <action selector="tappedAdressLabel:" destination="bzE-FN-Jjw" id="ZyE-iO-hEg"/>
+                        <outlet property="delegate" destination="bzE-FN-Jjw" id="gvK-ZL-UXa"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1755.072463768116" y="-729.24107142857144"/>
         </scene>
@@ -366,6 +380,9 @@
         </systemColor>
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
