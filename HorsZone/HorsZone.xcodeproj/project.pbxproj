@@ -10,6 +10,7 @@
 		5F144FD127688EB9001F96CA /* SettingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F144FD027688EB9001F96CA /* SettingNavigationViewController.swift */; };
 		5F1816BB2756D09600F58F69 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1816BA2756D09600F58F69 /* LocalNotification.swift */; };
 		5F275AF9273F236500F7C599 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F275AF8273F236500F7C599 /* SettingsViewController.swift */; };
+		5F5A279C2779CA6100E738CF /* headingUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5A279B2779CA6100E738CF /* headingUser.png */; };
 		5F6011DD2739D85F00B857A6 /* PointList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6011DC2739D85F00B857A6 /* PointList.swift */; };
 		5F76FCC62754CA9300DDC6B1 /* orchestralEmergency.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */; };
 		5F8B2FD7276227CE008DA2D8 /* LangaugeAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2FD6276227CE008DA2D8 /* LangaugeAvailable.swift */; };
@@ -36,6 +37,8 @@
 		5F144FD027688EB9001F96CA /* SettingNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNavigationViewController.swift; sourceTree = "<group>"; };
 		5F1816BA2756D09600F58F69 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		5F275AF8273F236500F7C599 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5F5A27952779B1A100E738CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F5A279B2779CA6100E738CF /* headingUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headingUser.png; sourceTree = "<group>"; };
 		5F6011DC2739D85F00B857A6 /* PointList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointList.swift; sourceTree = "<group>"; };
 		5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = orchestralEmergency.caf; sourceTree = "<group>"; };
 		5F8B2FD6276227CE008DA2D8 /* LangaugeAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangaugeAvailable.swift; sourceTree = "<group>"; };
@@ -50,7 +53,6 @@
 		5FE35B742731C73900DC1EA2 /* HorsZone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HorsZone.xcdatamodel; sourceTree = "<group>"; };
 		5FE35B762731C73D00DC1EA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FE35B792731C73D00DC1EA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5FE35B7B2731C73D00DC1EA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = HorsZone/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
 		5FE35B872731CC8A00DC1EA2 /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
 		5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListZoneViewController.swift; sourceTree = "<group>"; };
 		5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneIdentity.swift; sourceTree = "<group>"; };
@@ -158,9 +160,10 @@
 				5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */,
 				5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */,
 				5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */,
+				5F5A279B2779CA6100E738CF /* headingUser.png */,
 				5FE35B782731C73D00DC1EA2 /* LaunchScreen.storyboard */,
 				5FE35B762731C73D00DC1EA2 /* Assets.xcassets */,
-				5FE35B7B2731C73D00DC1EA2 /* Info.plist */,
+				5F5A27952779B1A100E738CF /* Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				5F76FCC62754CA9300DDC6B1 /* orchestralEmergency.caf in Resources */,
 				5FE35B722731C73900DC1EA2 /* Main.storyboard in Resources */,
 				5FC3D87B273E6D210088ACA7 /* orchestralEmergency.mp3 in Resources */,
+				5F5A279C2779CA6100E738CF /* headingUser.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +428,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NLCUCTBNY2;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = HorsZone/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Cliquer sur \"Lorsque l'app est active\".  Cela permet de vous alertez si vous sortez de la zone.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -455,7 +459,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NLCUCTBNY2;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = HorsZone/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Cliquer sur \"Lorsque l'app est active\".  Cela permet de vous alertez si vous sortez de la zone.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -8,8 +8,21 @@
 import Foundation
 import CoreLocation
 import CoreData
-
-class Zone {
-    var points: [CLLocationCoordinate2D] = []
-    
-}
+//
+//extension Array where Element == PointList {
+//    var convertedToArrayofArray: [[PointList]] {
+//        var dict = [ZoneIdentify: [PointList]] ()
+//
+//        for points in self where points.zoneIdentify != nil {
+//            dict[points.zoneIdentify!, default: []].append(points)
+//        }
+//
+//        result = [[PointList]]()
+//        for (_, coordonate) in dict {
+//            result.append(coordonate)
+//        }
+//
+//        return result
+//
+//    }
+//}

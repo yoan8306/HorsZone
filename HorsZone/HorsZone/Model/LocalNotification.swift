@@ -29,7 +29,6 @@ class LocalNotification {
     }
 
     private func prepareMyAlert() {
-
         notification.title = "Attention !!!"
         notification.body = translateText.alertLeftZoneMessage()
         notification.categoryIdentifier = "StopMonitoring.category"

@@ -158,13 +158,41 @@ class Translate {
         let language = languageSelected()
         switch language {
         case .english:
-            return ["Settings", "Notification"]
+            return ["Languages", "Notification"]
         case .french:
-            return ["Réglages", "Notification"]
+            return ["Langues", "Notification"]
         case .spanish:
-            return ["Ajustes", "Notificación"]
+            return ["Idiomas", "Notificación"]
         case .deutsh:
-            return ["Einstellungen", "Benachrichtigung"]
+            return ["Sprachen", "Benachrichtigung"]
+        }
+    }
+    
+    func latitudeTranslate() ->String {
+        let language = languageSelected()
+        switch language {
+        case .english:
+           return "Latitude"
+        case .french:
+          return  "Latitude"
+        case .spanish:
+          return  "Latitud"
+        case .deutsh:
+           return "Breite"
+        }
+    }
+    
+    func longitudeTranslate() -> String {
+        let language = languageSelected()
+        switch language {
+        case .english:
+           return "Longitude"
+        case .french:
+           return "Longitude"
+        case .spanish:
+           return "Longitud"
+        case .deutsh:
+           return "Längengrad"
         }
     }
     
