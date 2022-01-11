@@ -10,7 +10,6 @@
 		5F144FD127688EB9001F96CA /* SettingNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F144FD027688EB9001F96CA /* SettingNavigationViewController.swift */; };
 		5F1816BB2756D09600F58F69 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1816BA2756D09600F58F69 /* LocalNotification.swift */; };
 		5F275AF9273F236500F7C599 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F275AF8273F236500F7C599 /* SettingsViewController.swift */; };
-		5F5A279C2779CA6100E738CF /* headingUser.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5A279B2779CA6100E738CF /* headingUser.png */; };
 		5F6011DD2739D85F00B857A6 /* PointList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6011DC2739D85F00B857A6 /* PointList.swift */; };
 		5F76FCC62754CA9300DDC6B1 /* orchestralEmergency.caf in Resources */ = {isa = PBXBuildFile; fileRef = 5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */; };
 		5F8B2FD7276227CE008DA2D8 /* LangaugeAvailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B2FD6276227CE008DA2D8 /* LangaugeAvailable.swift */; };
@@ -28,9 +27,10 @@
 		5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */; };
 		5FE35B8C2731D68700DC1EA2 /* ZoneIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */; };
 		5FE35B8E2731D99900DC1EA2 /* ExtensionMKPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE35B8D2731D99900DC1EA2 /* ExtensionMKPolygon.swift */; };
+		5FE49E80277CFD0B00208217 /* HeadingUserDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE49E7F277CFD0B00208217 /* HeadingUserDirection.swift */; };
+		5FE49E82277D02A200208217 /* HeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE49E81277D02A200208217 /* HeadingView.swift */; };
 		5FEA1EA42761647000ED8005 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA1EA32761647000ED8005 /* Zone.swift */; };
 		5FF11B092732B71F0015A023 /* ExtensionNsManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF11B082732B71F0015A023 /* ExtensionNsManagedObject.swift */; };
-		5FF78E8827678C5600A5D292 /* HeadingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF78E8727678C5600A5D292 /* HeadingClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,6 @@
 		5F1816BA2756D09600F58F69 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		5F275AF8273F236500F7C599 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5F5A27952779B1A100E738CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5F5A279B2779CA6100E738CF /* headingUser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headingUser.png; sourceTree = "<group>"; };
 		5F6011DC2739D85F00B857A6 /* PointList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointList.swift; sourceTree = "<group>"; };
 		5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = orchestralEmergency.caf; sourceTree = "<group>"; };
 		5F8B2FD6276227CE008DA2D8 /* LangaugeAvailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangaugeAvailable.swift; sourceTree = "<group>"; };
@@ -57,9 +56,10 @@
 		5FE35B892731D5B200DC1EA2 /* ListZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListZoneViewController.swift; sourceTree = "<group>"; };
 		5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneIdentity.swift; sourceTree = "<group>"; };
 		5FE35B8D2731D99900DC1EA2 /* ExtensionMKPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMKPolygon.swift; sourceTree = "<group>"; };
+		5FE49E7F277CFD0B00208217 /* HeadingUserDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingUserDirection.swift; sourceTree = "<group>"; };
+		5FE49E81277D02A200208217 /* HeadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingView.swift; sourceTree = "<group>"; };
 		5FEA1EA32761647000ED8005 /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
 		5FF11B082732B71F0015A023 /* ExtensionNsManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNsManagedObject.swift; sourceTree = "<group>"; };
-		5FF78E8727678C5600A5D292 /* HeadingClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,13 +142,13 @@
 		5FE35B832731C81700DC1EA2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5FE49E7F277CFD0B00208217 /* HeadingUserDirection.swift */,
 				5FE35B8B2731D68700DC1EA2 /* ZoneIdentity.swift */,
 				5F6011DC2739D85F00B857A6 /* PointList.swift */,
 				5F1816BA2756D09600F58F69 /* LocalNotification.swift */,
 				5FBBCF1D275AD67200E097C8 /* SettingsService.swift */,
 				5FEA1EA32761647000ED8005 /* Zone.swift */,
 				5FB9B95D276544E600BB9AEC /* Translate.swift */,
-				5FF78E8727678C5600A5D292 /* HeadingClass.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,7 +160,6 @@
 				5FE35B6C2731C73900DC1EA2 /* SceneDelegate.swift */,
 				5FC3D87A273E6D200088ACA7 /* orchestralEmergency.mp3 */,
 				5F76FCC52754CA9300DDC6B1 /* orchestralEmergency.caf */,
-				5F5A279B2779CA6100E738CF /* headingUser.png */,
 				5FE35B782731C73D00DC1EA2 /* LaunchScreen.storyboard */,
 				5FE35B762731C73D00DC1EA2 /* Assets.xcassets */,
 				5F5A27952779B1A100E738CF /* Info.plist */,
@@ -173,6 +172,7 @@
 			children = (
 				5FE35B8D2731D99900DC1EA2 /* ExtensionMKPolygon.swift */,
 				5FF11B082732B71F0015A023 /* ExtensionNsManagedObject.swift */,
+				5FE49E81277D02A200208217 /* HeadingView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -248,7 +248,6 @@
 				5F76FCC62754CA9300DDC6B1 /* orchestralEmergency.caf in Resources */,
 				5FE35B722731C73900DC1EA2 /* Main.storyboard in Resources */,
 				5FC3D87B273E6D210088ACA7 /* orchestralEmergency.mp3 in Resources */,
-				5F5A279C2779CA6100E738CF /* headingUser.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,12 +266,13 @@
 				5FF11B092732B71F0015A023 /* ExtensionNsManagedObject.swift in Sources */,
 				5FE35B882731CC8A00DC1EA2 /* MapKitViewController.swift in Sources */,
 				5FBBCF1E275AD67200E097C8 /* SettingsService.swift in Sources */,
-				5FF78E8827678C5600A5D292 /* HeadingClass.swift in Sources */,
 				5FE35B8E2731D99900DC1EA2 /* ExtensionMKPolygon.swift in Sources */,
 				5FE35B6D2731C73900DC1EA2 /* SceneDelegate.swift in Sources */,
 				5F144FD127688EB9001F96CA /* SettingNavigationViewController.swift in Sources */,
 				5FEA1EA42761647000ED8005 /* Zone.swift in Sources */,
 				5FE35B8A2731D5B200DC1EA2 /* ListZoneViewController.swift in Sources */,
+				5FE49E80277CFD0B00208217 /* HeadingUserDirection.swift in Sources */,
+				5FE49E82277D02A200208217 /* HeadingView.swift in Sources */,
 				5FBBCF20275ADBDA00E097C8 /* LanguageViewController.swift in Sources */,
 				5F1816BB2756D09600F58F69 /* LocalNotification.swift in Sources */,
 				5FB9B95E276544E600BB9AEC /* Translate.swift in Sources */,

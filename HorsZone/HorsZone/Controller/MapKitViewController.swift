@@ -15,9 +15,15 @@ import UserNotifications
 class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     // MARK: - Properties
     private var currentPlace: CLPlacemark?
+    
+    // arrow user direction
+    var headingImageView: UIImageView?
+    var userHeading: CLLocationDirection?
+    
 
     var zoneRecord = ZoneIdentify.all
     var locationManager = CLLocationManager()
+    var distance : Double = 0.00
     var canAddZone = false
     var points = [CLLocationCoordinate2D]()
     var pointUserHistory: [CLLocationCoordinate2D] = []
@@ -28,35 +34,45 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var alertSong: AVAudioPlayer?
     let myNotification = LocalNotification()
     var translateText = Translate()
-    var tapped = true
-    var userAnnotation = MKUserLocation()
-    
+    var tappedAdress = true
+    var startPosition: CLLocation!
+    var lastPosition: CLLocation!
+    var altitudeMin : CLLocationDistance = 0
+    var altitudeMax : CLLocationDistance = 0
+    var tappedAltitude = true
     
     // MARK: - IBoutlet
     @IBOutlet weak var mapBarItem: UITabBarItem!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var segmentedMap: UISegmentedControl!
     @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var altitudeLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var cleanLastZoneButton: UIButton!
     @IBOutlet weak var startMonitoringButton: UIButton!
     @IBOutlet weak var positionAdressUserLabel: UILabel!
     @IBOutlet weak var addZoneSwitch: UISwitch!
     @IBOutlet weak var addZoneLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicatorAdress: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicatorAltitude: UIActivityIndicatorView!
     
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+
         let name = Notification.Name(rawValue: "SortieZone")
         NotificationCenter.default.addObserver(self, selector: #selector(stopMonitoring),
                                                name: name, object: nil)
         initializeMapView()
         myNotification.notificationInitialize()
-        let tapped = UITapGestureRecognizer.init(target: self, action: #selector(MapKitViewController.tappedAdressLabel(_:)))
+        let tappedAdress = UITapGestureRecognizer.init(target: self, action: #selector(MapKitViewController.tappedAdressLabel(_:)))
         positionAdressUserLabel.isUserInteractionEnabled = true
-        positionAdressUserLabel.addGestureRecognizer(tapped)
+        positionAdressUserLabel.addGestureRecognizer(tappedAdress)
+        
+        let tappedAltitude = UITapGestureRecognizer.init(target: self, action: #selector(MapKitViewController.tappedAltitudeLabel(_:)))
+        altitudeLabel.isUserInteractionEnabled = true
+        altitudeLabel.addGestureRecognizer(tappedAltitude)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -197,10 +213,26 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         switch sender.state {
         case .ended, .began, .changed:
             showPositionAdressUserLabel(show: false)
-            if tapped {
-                tapped = false
+            if tappedAdress {
+                tappedAdress = false
             } else {
-                tapped = true
+                tappedAdress = true
+            }
+        case .cancelled, .failed:
+            return
+        default:
+            return
+        }
+    }
+    
+    @IBAction func tappedAltitudeLabel(_ sender: UITapGestureRecognizer) {
+        switch sender.state {
+        case .ended, .began, .changed:
+            showAltitudeLabel(show: false)
+            if tappedAltitude {
+                tappedAltitude = false
+            } else {
+                tappedAltitude = true
             }
         case .cancelled, .failed:
             return
@@ -224,8 +256,6 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             locationManager.startUpdatingLocation()
             locationManager.startUpdatingHeading()
         }
-        positionAdressUserLabel.layer.cornerRadius = 30
-        speedLabel.layer.cornerRadius = 30
         mapView.setUserTrackingMode(.follow, animated: true)
     }
     
@@ -234,7 +264,6 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         addZoneLabel.text = translateText.addZoneLabelText()
         cleanLastZoneButton.setTitle(translateText.cancelButtonText(), for: .normal)
         mapBarItem.title = translateText.mapBarItem()
-        
     }
     
     private func segmentedMapStyle(segmentIndex: Int) {
@@ -244,9 +273,9 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         case "Standard":
             mapView.mapType = .standard
         case "Satellite":
-            mapView.mapType = .satellite
+            mapView.mapType = .satelliteFlyover
         case "Hybrid":
-            mapView.mapType = .hybrid
+            mapView.mapType = .hybridFlyover
         default:
             mapView.mapType = .standard
         }
@@ -353,7 +382,12 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     private func showPositionAdressUserLabel(show: Bool) {
         positionAdressUserLabel.isHidden = !show
-        activityIndicator.isHidden = show
+        activityIndicatorAdress.isHidden = show
+    }
+    
+    private func showAltitudeLabel(show: Bool) {
+        altitudeLabel.isHidden = !show
+        activityIndicatorAltitude.isHidden = show
     }
 }
 
@@ -403,6 +437,11 @@ extension MapKitViewController {
             pointUserHistory.append(element.coordinate)
         }
         
+       measureDistanceTravelled(locations: locations)
+        
+       
+        getAltitude(locations: locations)
+        
         guard let speed = manager.location?.speed else { return }
         let speedConverted = speed / 1000 * 3600
         speedLabel.text = speed < 0 ? "0 km/h" : String(format: "%.0f", speedConverted) + " km/h"
@@ -430,7 +469,7 @@ extension MapKitViewController {
     private func createAdress(firstPlace: CLPlacemark ) {
         var addressString = ""
         showPositionAdressUserLabel(show: true)
-        if tapped {
+        if tappedAdress {
             if let name = firstPlace.name {
                 addressString = addressString + name + ", "
             }
@@ -454,5 +493,74 @@ extension MapKitViewController {
             addressString = translateText.latitudeTranslate() + ": " + String(format: "%.6f", latitude) + "\n\(translateText.longitudeTranslate()): " + String(format: "%.6f", longitude)
         }
         self.positionAdressUserLabel.text = addressString
+    }
+    
+    private func measureDistanceTravelled(locations: [CLLocation]) {
+        if startPosition == nil {
+            startPosition = locations.first
+        } else if let location = locations.last {
+            distance += lastPosition.distance(from: location)
+            let distanceConvert = distance / 1000
+            distanceLabel.text = String(format: "%.2f", distanceConvert) + " km"
+        }
+        lastPosition = locations.last
+    }
+    
+    private func getAltitude(locations: [CLLocation]) {
+        guard let altitude =  locations.last?.altitude else { return }
+        
+        for position in locations {
+            if position.altitude > altitudeMax {
+                altitudeMax = position.altitude
+            }
+            if position.altitude < altitudeMin {
+                altitudeMin = position.altitude
+            }
+        }
+        
+        if tappedAltitude {
+        altitudeLabel.text = "Alt:" + String(format: "%.0f", altitude) + " m"
+        } else {
+            altitudeLabel.text = "Min: " + String(format: "%.0f", altitudeMin) + " m" + " ... Max: " + String(format: "%.0f", altitudeMax) + " m"
+        }
+        showAltitudeLabel(show: true)
+    }
+}
+
+
+// MARK: - Arrow user direction
+extension MapKitViewController {
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        if views.last?.annotation is MKUserLocation {
+            addHeadingView(toAnnotationView: views.last!)
+        }
+    }
+    
+    func addHeadingView(toAnnotationView annotationView: MKAnnotationView) {
+        if headingImageView == nil {
+            let image = UIImage(named: "arrowDirection")
+            if let image = image {
+                headingImageView = UIImageView(image: image)
+                headingImageView!.frame = CGRect(x: (annotationView.frame.size.width - image.size.width)/2, y: (annotationView.frame.size.height - image.size.height)/2, width: image.size.width, height: image.size.height)
+                annotationView.insertSubview(headingImageView!, at: 0)
+                headingImageView!.isHidden = true
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+         if newHeading.headingAccuracy < 0 { return }
+
+         let heading = newHeading.trueHeading > 0 ? newHeading.trueHeading : newHeading.magneticHeading
+         userHeading = heading
+         updateHeadingRotation()
+        }
+    
+    func updateHeadingRotation() {
+        if let heading = locationManager.heading?.trueHeading, let headingImageView = headingImageView {
+            headingImageView.isHidden = false
+            let rotation = CGFloat(heading/180 * Double.pi)
+            headingImageView.transform = CGAffineTransform(rotationAngle: rotation)
+        }
     }
 }
