@@ -16,9 +16,9 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     // MARK: - Properties
     private var currentPlace: CLPlacemark?
     
-    // arrow user direction
-    var headingImageView: UIImageView?
-    var userHeading: CLLocationDirection?
+//    // arrow user direction
+//    var headingImageView: UIImageView?
+//    var userHeading: CLLocationDirection?
     
 
     var zoneRecord = ZoneIdentify.all
@@ -37,9 +37,9 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var tappedAdress = true
     var startPosition: CLLocation!
     var lastPosition: CLLocation!
-    var altitudeMin : CLLocationDistance = 0
-    var altitudeMax : CLLocationDistance = 0
     var tappedAltitude = true
+    var altitudeMin : CLLocationDistance?
+    var altitudeMax : CLLocationDistance?
     
     // MARK: - IBoutlet
     @IBOutlet weak var mapBarItem: UITabBarItem!
@@ -248,6 +248,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.isZoomEnabled = true
+        mapView.showsCompass = false
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -256,7 +257,13 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             locationManager.startUpdatingLocation()
             locationManager.startUpdatingHeading()
         }
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.setUserTrackingMode(.follow, animated: true)
+        
+        let compassBtn = MKCompassButton(mapView:mapView)
+        compassBtn.frame.origin = CGPoint(x: addZoneSwitch.frame.origin.x, y: addZoneSwitch.frame.origin.y + 15)
+        compassBtn.compassVisibility = .adaptive
+        view.addSubview(compassBtn)
     }
     
     private func initializeLanguageView() {
@@ -509,58 +516,67 @@ extension MapKitViewController {
     private func getAltitude(locations: [CLLocation]) {
         guard let altitude =  locations.last?.altitude else { return }
         
-        for position in locations {
-            if position.altitude > altitudeMax {
-                altitudeMax = position.altitude
+        if var max = altitudeMax, var min = altitudeMin {
+            for position in locations {
+                if position.altitude > max {
+                    altitudeMax = position.altitude
+                    max = position.altitude
+                }
+                
+                if position.altitude < min {
+                    altitudeMin = position.altitude
+                    min = position.altitude
+                }
             }
-            if position.altitude < altitudeMin {
-                altitudeMin = position.altitude
+            
+            if tappedAltitude {
+                altitudeLabel.text = "Alt:" + String(format: "%.0f", altitude) + " m"
+            } else {
+                altitudeLabel.text = "🔼Max: " + String(format: "%.0f", max) + " m" + "\n🔽Min: " + String(format: "%.0f", min) + " m"
             }
+            
+        } else {
+            altitudeMin = locations.first?.altitude
+            altitudeMax = locations.first?.altitude
         }
         
-        if tappedAltitude {
-        altitudeLabel.text = "Alt:" + String(format: "%.0f", altitude) + " m"
-        } else {
-            altitudeLabel.text = "Min: " + String(format: "%.0f", altitudeMin) + " m" + " ... Max: " + String(format: "%.0f", altitudeMax) + " m"
-        }
         showAltitudeLabel(show: true)
     }
 }
 
-
 // MARK: - Arrow user direction
-extension MapKitViewController {
-    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        if views.last?.annotation is MKUserLocation {
-            addHeadingView(toAnnotationView: views.last!)
-        }
-    }
-    
-    func addHeadingView(toAnnotationView annotationView: MKAnnotationView) {
-        if headingImageView == nil {
-            let image = UIImage(named: "arrowDirection")
-            if let image = image {
-                headingImageView = UIImageView(image: image)
-                headingImageView!.frame = CGRect(x: (annotationView.frame.size.width - image.size.width)/2, y: (annotationView.frame.size.height - image.size.height)/2, width: image.size.width, height: image.size.height)
-                annotationView.insertSubview(headingImageView!, at: 0)
-                headingImageView!.isHidden = true
-            }
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-         if newHeading.headingAccuracy < 0 { return }
-
-         let heading = newHeading.trueHeading > 0 ? newHeading.trueHeading : newHeading.magneticHeading
-         userHeading = heading
-         updateHeadingRotation()
-        }
-    
-    func updateHeadingRotation() {
-        if let heading = locationManager.heading?.trueHeading, let headingImageView = headingImageView {
-            headingImageView.isHidden = false
-            let rotation = CGFloat(heading/180 * Double.pi)
-            headingImageView.transform = CGAffineTransform(rotationAngle: rotation)
-        }
-    }
-}
+//extension MapKitViewController {
+//    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+//        if views.last?.annotation is MKUserLocation {
+//            addHeadingView(toAnnotationView: views.last!)
+//        }
+//    }
+//
+//    func addHeadingView(toAnnotationView annotationView: MKAnnotationView) {
+//        if headingImageView == nil {
+//            let image = UIImage(named: "arrowDirection")
+//            if let image = image {
+//                headingImageView = UIImageView(image: image)
+//                headingImageView!.frame = CGRect(x: (annotationView.frame.size.width - image.size.width)/2, y: (annotationView.frame.size.height - image.size.height)/2, width: image.size.width, height: image.size.height)
+//                annotationView.insertSubview(headingImageView!, at: 0)
+//                headingImageView!.isHidden = true
+//            }
+//        }
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+//         if newHeading.headingAccuracy < 0 { return }
+//
+//         let heading = newHeading.trueHeading > 0 ? newHeading.trueHeading : newHeading.magneticHeading
+//         userHeading = heading
+//         updateHeadingRotation()
+//        }
+//
+//    func updateHeadingRotation() {
+//        if let heading = locationManager.heading?.trueHeading, let headingImageView = headingImageView {
+//            headingImageView.isHidden = false
+//            let rotation = CGFloat(heading/180 * Double.pi)
+//            headingImageView.transform = CGAffineTransform(rotationAngle: rotation)
+//        }
+//    }
+//}
