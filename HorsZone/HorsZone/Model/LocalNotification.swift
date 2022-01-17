@@ -29,11 +29,12 @@ class LocalNotification {
     }
 
     private func prepareMyAlert() {
+        let notificationSound = UNNotificationSoundName.init(rawValue: "orchestralEmergency.caf")
         notification.title = "Attention !!!"
         notification.body = translateText.alertLeftZoneMessage()
         notification.categoryIdentifier = "StopMonitoring.category"
         notification.badge = 1
-        notification.sound = UNNotificationSound.default
+        notification.sound = UNNotificationSound(named: notificationSound)
 
 //        setActionCategories()
     }
