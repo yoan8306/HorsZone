@@ -499,7 +499,14 @@ extension MapKitViewController {
             let longitude = coordinate.longitude
             addressString = translateText.latitudeTranslate() + ": " + String(format: "%.6f", latitude) + "\n\(translateText.longitudeTranslate()): " + String(format: "%.6f", longitude)
         }
-        self.positionAdressUserLabel.text = addressString
+        let fullString = NSMutableAttributedString(string:  addressString)
+        let image1Attachment = NSTextAttachment()
+        image1Attachment.image = UIImage(systemName: "hand.point.up.left.fill")
+        let image1String = NSAttributedString(attachment: image1Attachment)
+        fullString.append(image1String)
+        
+        self.positionAdressUserLabel.attributedText = fullString
+        print(fullString)
     }
     
     private func measureDistanceTravelled(locations: [CLLocation]) {
@@ -514,6 +521,11 @@ extension MapKitViewController {
     }
     
     private func getAltitude(locations: [CLLocation]) {
+        var fullString = NSMutableAttributedString()
+        let image1Attachment = NSTextAttachment()
+        image1Attachment.image = UIImage(systemName: "hand.point.up.left.fill")
+        let image1String = NSAttributedString(attachment: image1Attachment)
+        
         guard let altitude =  locations.last?.altitude else { return }
         
         if var max = altitudeMax, var min = altitudeMin {
@@ -530,10 +542,14 @@ extension MapKitViewController {
             }
             
             if tappedAltitude {
-                altitudeLabel.text = "Alt:" + String(format: "%.0f", altitude) + " m"
+                 fullString = NSMutableAttributedString(string: "Alt:" + String(format: "%.0f", altitude) + " m")
             } else {
-                altitudeLabel.text = "🔼Max: " + String(format: "%.0f", max) + " m" + "\n🔽Min: " + String(format: "%.0f", min) + " m"
+                 fullString = NSMutableAttributedString(string: "🔼Max: " + String(format: "%.0f", max) + " m" + "\n🔽Min: " + String(format: "%.0f", min) + " m ")
             }
+            
+            fullString.append(image1String)
+            
+            altitudeLabel.attributedText = fullString
             
         } else {
             altitudeMin = locations.first?.altitude
