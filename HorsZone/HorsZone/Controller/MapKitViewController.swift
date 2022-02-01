@@ -16,11 +16,11 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     // MARK: - Properties
     private var currentPlace: CLPlacemark?
     
-//    // arrow user direction
-//    var headingImageView: UIImageView?
-//    var userHeading: CLLocationDirection?
+    //    // arrow user direction
+    //    var headingImageView: UIImageView?
+    //    var userHeading: CLLocationDirection?
     
-
+    
     var zoneRecord = ZoneIdentify.all
     var locationManager = CLLocationManager()
     var distance : Double = 0.00
@@ -60,7 +60,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let name = Notification.Name(rawValue: "SortieZone")
         NotificationCenter.default.addObserver(self, selector: #selector(stopMonitoring),
                                                name: name, object: nil)
@@ -169,7 +169,6 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     /// start if user is in polygon
     @IBAction func startMonitoringActionButton() {
-        addZoneOff()
         guard CLLocationManager.authorizationStatus() == .authorizedWhenInUse
                 ||
                 CLLocationManager.authorizationStatus() == .authorizedAlways else {
@@ -177,11 +176,16 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     return
                 }
         
-        guard !startCheckPosition else {
-            startMonitoringOff()
-            return
+        if addZoneSwitch.isOn {
+            addZoneOff()
         }
-        startMonitoringOn()
+        
+        switch startCheckPosition {
+        case true:
+            startMonitoringOff()
+        case false:
+            startMonitoringOn()
+        }
     }
     
     /// check user each 3 secondes if user is in polygon
@@ -243,7 +247,7 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     
     // MARK: - Private function
-        
+    
     private func initializeMapView() {
         mapView.delegate = self
         mapView.showsUserLocation = true
@@ -258,10 +262,12 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             locationManager.startUpdatingHeading()
         }
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        mapView.setUserTrackingMode(.follow, animated: true)
+        mapView.setUserTrackingMode(.followWithHeading, animated: true)
+        
+        cleanLastZoneButton.layer.cornerRadius = 10
         
         let compassBtn = MKCompassButton(mapView:mapView)
-        compassBtn.frame.origin = CGPoint(x: addZoneSwitch.frame.origin.x, y: addZoneSwitch.frame.origin.y + 15)
+        compassBtn.frame.origin = CGPoint(x: addZoneSwitch.frame.origin.x, y:  addZoneSwitch.frame.origin.y + addZoneSwitch.frame.height + 10)
         compassBtn.compassVisibility = .adaptive
         view.addSubview(compassBtn)
     }
@@ -302,40 +308,48 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     private func animateMonitoringButton() {
-        UIView.animate(withDuration: 0.8, delay: 0, options: .transitionCurlUp, animations: {
-            self.startMonitoringButton.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.8, delay: 0, options: .transitionCurlUp, animations: {
-            self.startMonitoringButton.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 0.8, delay: 0, options: .transitionCurlUp, animations: {
+        UIView.animate(withDuration: 1.5, delay: 0, options: [.repeat, .autoreverse, .allowUserInteraction], animations: {
+            self.startMonitoringButton.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
+            self.startMonitoringButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             self.startMonitoringButton.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
+        
+        let pulseAnimation = CABasicAnimation(keyPath: "opacity")
+        pulseAnimation.duration = 1
+        pulseAnimation.fromValue = 0.6
+        pulseAnimation.toValue = 1
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = .greatestFiniteMagnitude
+        self.startMonitoringButton.layer.add(pulseAnimation, forKey: nil)
     }
     
     private func addZoneOff() {
         canAddZone = false
         mapView.isUserInteractionEnabled = true
         addZoneSwitch.isOn = false
-        cleanLastZoneButton.isHidden = true
+        UIView.animate(withDuration: 0.5, delay: 0, options:.showHideTransitionViews, animations: { self.cleanLastZoneButton.isHidden = true
+            self.cleanLastZoneButton.layer.opacity = 0
+        }, completion: nil)
     }
     
     private func addZoneOn() {
         canAddZone = true
         mapView.isUserInteractionEnabled = false
         addZoneSwitch.isOn = true
-        cleanLastZoneButton.isHidden = false
+        UIView.animate(withDuration: 0.5, delay: 0, options: .showHideTransitionViews, animations: { self.cleanLastZoneButton.isHidden = false
+            self.cleanLastZoneButton.layer.opacity = 1
+        }, completion: nil)
     }
     
-    public func startMonitoringOff() {
+    private func startMonitoringOff() {
         UIApplication.shared.applicationIconBadgeNumber = 0
         locationManager.allowsBackgroundLocationUpdates = false
         startMonitoringButton.backgroundColor? = .init(red: 0, green: 0, blue: 0, alpha: 0)
         startCheckPosition = false
         startMonitoringButton.setTitle(translateText.buttonStartMonitoringText(), for: .normal)
         timer?.invalidate()
+         startMonitoringButton.layer.removeAllAnimations()
     }
     
     /// initialize timer and launch checkPositionInPolygon()
@@ -347,7 +361,9 @@ class MapKitViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         startMonitoringButton.backgroundColor = #colorLiteral(red: 0, green: 0.9866302609, blue: 0.837818563, alpha: 0.699257234)
         startMonitoringButton.layer.cornerRadius = startMonitoringButton.frame.height / 2
         startMonitoringButton.setTitle(translateText.buttonStopMonitoringText(), for: .normal)
+        
         animateMonitoringButton()
+        
     }
     
     private func makeAlerte() {
@@ -439,14 +455,12 @@ extension MapKitViewController {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         getAddressLocalizationUser(locations: locations)
-          
+        
         for element in  locations {
             pointUserHistory.append(element.coordinate)
         }
         
-       measureDistanceTravelled(locations: locations)
-        
-       
+        measureDistanceTravelled(locations: locations)
         getAltitude(locations: locations)
         
         guard let speed = manager.location?.speed else { return }
@@ -542,13 +556,12 @@ extension MapKitViewController {
             }
             
             if tappedAltitude {
-                 fullString = NSMutableAttributedString(string: "Alt:" + String(format: "%.0f", altitude) + " m")
+                fullString = NSMutableAttributedString(string: "Alt:" + String(format: "%.0f", altitude) + " m")
             } else {
-                 fullString = NSMutableAttributedString(string: "🔼Max: " + String(format: "%.0f", max) + " m" + "\n🔽Min: " + String(format: "%.0f", min) + " m ")
+                fullString = NSMutableAttributedString(string: "🔼Max: " + String(format: "%.0f", max) + " m" + "\n🔽Min: " + String(format: "%.0f", min) + " m ")
             }
             
             fullString.append(image1String)
-            
             altitudeLabel.attributedText = fullString
             
         } else {
